@@ -1,0 +1,5947 @@
+/* ============================================================
+   TCT Garment Fashion â€” classy gold & ivory theme on Bootstrap
+   ============================================================ */
+:root {
+  /* TCT Premium Blue & Orange Theme (Exact Logo Colors) */
+  --tct-exact-blue: #1967D2;
+  --tct-exact-orange: #F96915;
+
+  --tct-bg-light: #F8FAFC;
+  --tct-bg-card: #FFFFFF;
+  --tct-navy: #001A36;
+  /* Premium dark background derived from exact blue */
+  --tct-brand-blue: var(--tct-exact-blue);
+  --tct-orange: var(--tct-exact-orange);
+  --tct-text-main: #243247;
+  --tct-text-muted: #64748B;
+
+  /* Fallback mapped variables */
+  --tct-ivory: var(--tct-bg-light);
+  --tct-ivory-deep: #E2E8F0;
+  --tct-ink: var(--tct-text-main);
+  --tct-ink-soft: var(--tct-text-muted);
+
+  /* Replace "gold" with exact orange */
+  --tct-gold: var(--tct-exact-orange);
+  --tct-gold-deep: #D63F0B;
+  /* Darker shade of orange */
+  --tct-gold-soft: rgba(251, 76, 15, 0.25);
+
+  /* Replace "night" with brand blue */
+  --tct-night: var(--tct-navy);
+  --tct-night-soft: var(--tct-brand-blue);
+
+  --tct-serif: "Inter", "Segoe UI", sans-serif;
+  --tct-sans: "Inter", "Segoe UI", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Decorative layers (shooting stars, orbs, hero-rule star) may extend
+   past the viewport edge â€” clip horizontal overflow so phones never
+   get sideways wiggle. Vertical scrolling is unaffected. */
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--tct-sans);
+  background: var(--tct-ivory);
+  color: var(--tct-ink);
+  font-weight: 300;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- Typography ---------- */
+.tct-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  font-size: 0.78rem;
+  color: var(--tct-gold);
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.tct-section-title {
+  font-family: var(--tct-serif);
+  font-weight: 600;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  line-height: 1.1;
+}
+
+.tct-section-sub {
+  max-width: 560px;
+  margin: 0.9rem auto 0;
+  color: var(--tct-ink-soft);
+  font-size: 1.05rem;
+}
+
+/* ---------- Navbar ---------- */
+.tct-navbar {
+  padding: 1rem 0;
+  transition: all 0.3s ease;
+  background: var(--tct-navy);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tct-navbar--scrolled {
+  background: var(--tct-navy);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 0.6rem 0;
+}
+
+.tct-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.tct-brand__mark {
+  font-family: var(--tct-serif);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #fff;
+  background: linear-gradient(135deg, var(--tct-brand-blue), var(--tct-navy));
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid var(--tct-orange);
+  letter-spacing: 0.03em;
+}
+
+.tct-navbar .tct-brand__mark {
+  color: #fff;
+}
+
+.tct-brand__text {
+  font-family: var(--tct-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--tct-brand-blue);
+  letter-spacing: 0.02em;
+}
+
+.tct-brand__text em {
+  color: var(--tct-orange);
+  font-style: normal;
+}
+
+.tct-nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: capitalize;
+  margin: 0 0.5rem;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.tct-nav-link.active {
+  color: var(--tct-orange) !important;
+}
+
+.tct-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0px;
+  width: 0;
+  height: 2px;
+  background: var(--tct-orange);
+  transition: all 0.25s ease;
+  transform: translateX(-50%);
+}
+
+.tct-nav-link:hover,
+.tct-nav-link:focus {
+  color: var(--tct-orange) !important;
+}
+
+.tct-nav-link:hover::after,
+.tct-nav-link.active::after {
+  width: 100%;
+}
+
+.tct-btn-sm-nav {
+  padding: 0.45rem 1.3rem !important;
+  font-size: 0.85rem !important;
+}
+
+/* ---------- Hero ---------- */
+.tct-hero {
+  min-height: 92vh;
+  background:
+    radial-gradient(ellipse at 75% 20%, rgba(25, 103, 210, 0.4), transparent 55%),
+    radial-gradient(ellipse at 15% 85%, rgba(249, 115, 22, 0.3), transparent 50%),
+    var(--tct-brand-blue);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Simple couture hairline frame â€” corner brackets removed per feedback */
+.tct-hero::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
+.tct-hero-title {
+  font-family: var(--tct-serif);
+  font-size: clamp(3rem, 7.5vw, 5.6rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.12;
+  margin-top: 4.5rem;
+}
+
+/* NOTE: the old `.tct-hero-title span` italic-gold rule was removed â€”
+   it slanted and gold-tinted EVERY letter (each letter is a span now),
+   which clipped the serif swashes and made words look broken.
+   Letters are upright ivory; only .is-gold letters get the gradient. */
+.tct-hero-letter {
+  padding-right: 0.015em;
+}
+
+.tct-hero-rule {
+  color: var(--tct-orange);
+  letter-spacing: 0.6em;
+  margin: 0.6rem 0 1rem;
+}
+
+.tct-hero-sub {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.15rem;
+  max-width: 540px;
+}
+
+.tct-hero-sub strong {
+  color: var(--tct-orange);
+  font-weight: 500;
+}
+
+/* ---------- Buttons ---------- */
+.tct-btn-gold {
+  background: var(--tct-orange);
+  color: #fff !important;
+  border: none;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: capitalize;
+  padding: 0.75rem 2rem;
+  border-radius: 4px;
+  transition: all 0.25s ease;
+}
+
+.tct-btn-gold:hover {
+  background: #EA580C;
+  /* Darker orange */
+  color: #fff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(249, 115, 22, 0.25);
+}
+
+.tct-btn-ghost {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff !important;
+  letter-spacing: 0.05em;
+  text-transform: capitalize;
+  padding: 0.75rem 2rem;
+  border-radius: 4px;
+  transition: all 0.25s ease;
+}
+
+.tct-btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+  color: #fff !important;
+}
+
+.tct-btn-outline-gold {
+  border: 1px solid var(--tct-gold);
+  color: var(--tct-gold-deep) !important;
+  background: transparent;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  padding: 0.55rem 1.5rem;
+  transition: all 0.25s ease;
+}
+
+.tct-btn-outline-gold:hover {
+  background: var(--tct-gold);
+  color: #fff !important;
+}
+
+.tct-payment-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(18, 15, 10, 0.76);
+}
+
+.tct-payment-dialog {
+  position: relative;
+  width: min(94vw, 700px);
+  padding: 2.4rem 2.6rem;
+  border: 1px solid rgba(185, 138, 47, 0.5);
+  background: var(--tct-ivory);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+  max-height: 92vh;
+  overflow: hidden;
+}
+
+/* On short screens allow gentle inner scrolling WITHOUT visible scrollbar */
+.tct-payment-dialog {
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.tct-payment-dialog::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Edge */
+}
+
+.tct-payment-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border: 1px solid rgba(39, 33, 24, 0.2);
+  border-radius: 50%;
+  color: var(--tct-ink);
+  background: transparent;
+}
+
+.tct-payment-close:hover {
+  color: var(--tct-gold-deep);
+  border-color: var(--tct-gold);
+}
+
+.tct-payment-summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1rem 0 1.5rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid rgba(39, 33, 24, 0.12);
+  border-bottom: 1px solid rgba(39, 33, 24, 0.12);
+}
+
+.tct-payment-summary strong {
+  color: var(--tct-gold-deep);
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .tct-payment-dialog {
+    padding: 1.5rem;
+    overflow-y: auto;
+    /* short phones: gentle inner scroll, scrollbar hidden */
+  }
+
+  .tct-payment-summary {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+}
+
+/* ---------- Sections ---------- */
+.tct-section {
+  padding: 6rem 0;
+}
+
+@keyframes tct-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.tct-section>.container>.row>[class*="col-"] {
+  animation: tct-reveal 0.75s both;
+}
+
+.tct-section>.container>.row>[class*="col-"]:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.tct-section>.container>.row>[class*="col-"]:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.tct-section>.container>.row>[class*="col-"]:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.tct-section--dark {
+  background:
+    radial-gradient(ellipse at 80% 10%, rgba(185, 138, 47, 0.14), transparent 55%),
+    var(--tct-night);
+  color: #f4efe4;
+}
+
+.tct-section--dark .tct-section-sub {
+  color: rgba(244, 239, 228, 0.65);
+}
+
+.tct-section--skyblue {
+  background: #E0F2FE;
+  color: #1E293B;
+}
+.tct-section--skyblue .tct-section-sub {
+  color: #475569;
+}
+.tct-section--skyblue .tct-eyebrow {
+  color: var(--tct-brand-blue);
+}
+.tct-section--skyblue .tct-section-title {
+  color: #1E293B;
+}
+.tct-section--skyblue .tct-value-card {
+  background: #ffffff;
+  border-color: rgba(25, 103, 210, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.tct-section--skyblue .tct-value-card h4 {
+  color: var(--tct-brand-blue);
+}
+.tct-section--skyblue .tct-value-card p {
+  color: #475569;
+}
+.tct-section--skyblue .tct-value-card i {
+  color: var(--tct-orange);
+  border-color: rgba(249, 105, 21, 0.3);
+  background: radial-gradient(circle at 30% 30%, rgba(249, 105, 21, 0.1), transparent 65%);
+}
+.tct-section--skyblue .tct-value-card:hover i {
+  border-color: var(--tct-orange);
+  box-shadow: 0 0 16px rgba(249, 105, 21, 0.2);
+}
+
+/* ---------- Price cards ---------- */
+.tct-price-card {
+  border: 1px solid rgba(185, 138, 47, 0.25);
+  border-radius: 4px;
+  background: #fffdf8;
+  box-shadow: 0 8px 30px rgba(60, 48, 20, 0.07);
+  transition: all 0.3s ease;
+  overflow: visible;
+}
+
+.tct-price-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 44px rgba(60, 48, 20, 0.14);
+  border-color: var(--tct-gold);
+}
+
+.tct-card-title {
+  font-family: var(--tct-serif);
+  font-weight: 600;
+  font-size: 1.55rem;
+  transition: letter-spacing 0.45s ease, color 0.3s ease;
+}
+
+.tct-price-card:hover .tct-card-title,
+.tct-combo-featured:hover .tct-card-title {
+  letter-spacing: 0.035em;
+  color: var(--tct-gold-deep);
+}
+
+.tct-chip {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  border: 1px solid var(--tct-gold-soft);
+  color: var(--tct-gold-deep);
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+  white-space: nowrap;
+}
+
+.tct-price {
+  font-family: var(--tct-serif);
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--tct-gold-deep);
+  margin: 0.8rem 0 0.4rem;
+  line-height: 1;
+  background: linear-gradient(120deg, #8a651f, var(--tct-gold-deep) 40%, #c49a3c 60%, var(--tct-gold-deep));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tct-price__unit {
+  font-size: 1.1rem;
+  vertical-align: super;
+  margin-right: 0.3rem;
+  letter-spacing: 0.06em;
+}
+
+.tct-meta li,
+.tct-combo-list li {
+  padding: 0.3rem 0;
+  color: var(--tct-ink-soft);
+  font-size: 0.95rem;
+}
+
+.tct-meta i,
+.tct-combo-list i,
+.tct-gift-note i,
+.tct-save-note i {
+  color: var(--tct-gold);
+  margin-right: 0.5rem;
+}
+
+.tct-save-note {
+  color: #7a5b12;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.tct-gift-note {
+  border-top: 1px dashed rgba(185, 138, 47, 0.4);
+  margin-top: auto;
+  padding-top: 0.8rem;
+  color: var(--tct-ink-soft);
+  font-size: 0.92rem;
+}
+
+/* ---------- Photo cards ---------- */
+.tct-price-card--photo {
+  padding: 0;
+}
+
+.tct-card-photo {
+  height: 200px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(185, 138, 47, 0.3);
+}
+
+.tct-card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.tct-price-card:hover .tct-card-photo img {
+  transform: scale(1.05);
+}
+
+.tct-price-card--photo .card-body {
+  padding: 1.4rem 1.5rem 1.5rem;
+}
+
+/* ---------- Combo cards ---------- */
+.tct-combo-featured {
+  border: 1.5px solid var(--tct-gold);
+  border-radius: 4px;
+  background: linear-gradient(160deg, #2b251c, #201c15);
+  color: #f4efe4;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  position: relative;
+  overflow: visible;
+}
+
+.tct-combo-featured .tct-card-title {
+  color: #fff;
+}
+
+.tct-combo-featured .tct-price {
+  color: var(--tct-gold-soft);
+}
+
+.tct-combo-featured .tct-combo-list li,
+.tct-combo-featured .tct-gift-note {
+  color: rgba(244, 239, 228, 0.75);
+}
+
+.tct-combo-featured .tct-combo-list i,
+.tct-combo-featured .tct-gift-note i {
+  color: var(--tct-gold-soft);
+}
+
+.tct-combo-featured .tct-save-note {
+  color: var(--tct-gold-soft);
+}
+
+.tct-combo-featured .tct-gift-note {
+  border-top-color: rgba(231, 211, 166, 0.35);
+}
+
+.tct-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #e9cf94, var(--tct-gold));
+  color: #241d0e;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.35rem 1.2rem;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(185, 138, 47, 0.45);
+  z-index: 2;
+}
+
+/* ---------- About ---------- */
+.tct-feature {
+  border: 1px solid rgba(185, 138, 47, 0.25);
+  background: #fffdf8;
+  border-radius: 4px;
+  padding: 1.2rem 1rem;
+  height: 100%;
+  text-align: center;
+}
+
+.tct-feature i {
+  font-size: 1.6rem;
+  color: var(--tct-gold);
+}
+
+.tct-feature h4 {
+  font-family: var(--tct-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0.6rem 0 0.3rem;
+}
+
+.tct-feature p {
+  font-size: 0.85rem;
+  color: var(--tct-ink-soft);
+  margin: 0;
+}
+
+.tct-about-panel {
+  background: linear-gradient(160deg, #2b251c, #201c15);
+  border-radius: 4px;
+  padding: 3rem;
+  border: 1px solid rgba(185, 138, 47, 0.3);
+}
+
+.tct-quote {
+  font-family: var(--tct-serif);
+  font-size: 1.45rem;
+  font-style: italic;
+  color: #f4efe4;
+  line-height: 1.5;
+}
+
+.tct-quote-by {
+  color: var(--tct-gold-soft);
+  margin-top: 1.2rem;
+  letter-spacing: 0.06em;
+}
+
+/* ---------- Contact ---------- */
+.tct-contact li {
+  padding: 0.45rem 0;
+  color: rgba(244, 239, 228, 0.8);
+}
+
+.tct-contact i {
+  color: var(--tct-gold-soft);
+  margin-right: 0.6rem;
+}
+
+/* Address â†’ Google Maps link: gold on hover with dotted underline */
+.tct-maps-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(231, 211, 166, 0.45);
+  transition: all 0.3s ease;
+}
+
+.tct-maps-link:hover {
+  color: var(--tct-gold-soft);
+  border-bottom-color: var(--tct-gold-soft);
+}
+
+/* Same treatment for the address in the light footer */
+
+.tct-form {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(231, 211, 166, 0.25);
+  border-radius: 4px;
+  padding: 2rem;
+}
+
+.tct-form .form-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(244, 239, 228, 0.65);
+}
+
+.tct-form .form-control,
+.tct-form .form-select {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(231, 211, 166, 0.25);
+  color: #f4efe4;
+}
+
+.tct-form .form-control:focus,
+.tct-form .form-select:focus {
+  background: rgba(0, 0, 0, 0.35);
+  border-color: var(--tct-gold);
+  color: #fff;
+  box-shadow: 0 0 0 0.2rem rgba(185, 138, 47, 0.25);
+}
+
+.tct-form .form-control::placeholder {
+  color: rgba(244, 239, 228, 0.35);
+}
+
+.tct-form-ok {
+  color: #a7d7a0;
+}
+
+.tct-form-err {
+  color: #e2a9a0;
+}
+
+/* ---------- Footer ---------- */
+.tct-footer {
+  background: #F0F6FF;
+  color: #1E293B;
+  border-top: 1px solid rgba(25, 103, 210, 0.2);
+}
+
+.tct-brand--footer .tct-brand__text {
+  color: var(--tct-brand-blue);
+  font-size: 1.5rem;
+}
+
+.tct-footer-tag {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  max-width: 300px;
+}
+
+.tct-footer h5 {
+  font-family: var(--tct-serif);
+  color: var(--tct-orange);
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+}
+
+.tct-footer-links li {
+  padding: 0.25rem 0;
+  font-size: 0.95rem;
+}
+
+.tct-footer-links a {
+  color: #475569;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.tct-footer-links a:hover {
+  color: var(--tct-brand-blue);
+}
+
+.tct-social-links {
+  display: flex;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+}
+
+.tct-social-links a {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(25, 103, 210, 0.3);
+  border-radius: 50%;
+  color: var(--tct-brand-blue);
+  text-decoration: none;
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+
+.tct-social-links a:hover {
+  transform: translateY(-4px) rotate(6deg);
+  background: var(--tct-brand-blue);
+  color: #ffffff;
+}
+
+.tct-footer-bottom {
+  border-top: 1px solid rgba(25, 103, 210, 0.15);
+  padding: 1.2rem 0;
+  font-size: 0.85rem;
+  text-align: center;
+  color: #64748B;
+}
+
+.tct-footer-links a {
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Brand / logo ---------- */
+.tct-brand__logo {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1.5px solid var(--tct-orange);
+  box-shadow: 0 0 12px rgba(252, 67, 13, 0.35);
+  margin-right: 0.8rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tct-brand:hover .tct-brand__logo {
+  transform: scale(1.05);
+  box-shadow: 0 0 16px rgba(252, 67, 13, 0.5);
+}
+
+.tct-hero-logo-frame {
+  display: inline-block;
+  padding: 1.1rem;
+  border: 1px solid rgba(231, 211, 166, 0.4);
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, rgba(231, 211, 166, 0.16), transparent 65%);
+}
+
+.tct-hero-logo {
+  width: 190px;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1.5px solid var(--tct-gold-soft);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* ---------- Page hero (About / Enquire) ---------- */
+.tct-page-hero {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(252, 67, 13, 0.15), transparent 60%),
+    var(--tct-navy);
+  padding: 9.5rem 0 3.5rem;
+  border-bottom: 1px solid rgba(252, 67, 13, 0.25);
+}
+
+.tct-page-hero__logo {
+  width: 92px;
+  height: 92px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1.5px solid var(--tct-gold-soft);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  margin-bottom: 1.2rem;
+}
+
+.tct-page-title {
+  font-family: var(--tct-serif);
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 700;
+  color: #fff;
+  margin-top: 1rem;
+}
+
+.tct-page-hero .tct-section-sub {
+  color: rgba(244, 239, 228, 0.7);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---------- About page ---------- */
+.tct-stat {
+  border: 1px solid rgba(185, 138, 47, 0.3);
+  background: #fffdf8;
+  border-radius: 4px;
+  padding: 1.1rem 0.75rem;
+  text-align: center;
+  height: 100%;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.tct-stat::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, var(--tct-gold), transparent);
+  transition: width 0.45s ease;
+}
+
+.tct-stat:hover {
+  transform: translateY(-6px);
+  border-color: var(--tct-gold);
+  box-shadow: 0 16px 34px rgba(60, 48, 20, 0.14);
+}
+
+.tct-stat:hover::after {
+  width: 72%;
+}
+
+.tct-stat strong {
+  display: block;
+  font-family: var(--tct-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--tct-gold-deep);
+}
+
+.tct-stat span {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--tct-ink-soft);
+}
+
+.tct-value-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(231, 211, 166, 0.2);
+  border-radius: 4px;
+  padding: 1.8rem 1.4rem;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.tct-value-card:hover {
+  border-color: var(--tct-gold);
+  transform: translateY(-4px);
+}
+
+.tct-value-card i {
+  font-size: 1.8rem;
+  color: var(--tct-gold-soft);
+  width: 58px;
+  height: 58px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(231, 211, 166, 0.35);
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(231, 211, 166, 0.16), transparent 65%);
+  transition: transform 0.55s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tct-value-card:hover i {
+  transform: rotateY(360deg);
+  border-color: var(--tct-gold-soft);
+  box-shadow: 0 0 22px rgba(231, 211, 166, 0.25);
+}
+
+.tct-value-card h4 {
+  font-family: var(--tct-serif);
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin: 0.9rem 0 0.5rem;
+  color: #fff;
+}
+
+.tct-value-card p {
+  color: rgba(244, 239, 228, 0.65);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.tct-about-panel__logo img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid rgba(231, 211, 166, 0.4);
+}
+
+.tct-chip--lg {
+  font-size: 0.9rem;
+  padding: 0.55rem 1.3rem;
+  background: rgba(185, 138, 47, 0.08);
+}
+
+.tct-chips .tct-chip {
+  border-color: rgba(185, 138, 47, 0.45);
+  color: var(--tct-gold-deep);
+}
+
+/* ---------- Enquire page ---------- */
+.tct-form--light .form-label {
+  color: var(--tct-ink-soft);
+}
+
+.tct-form--light .form-control,
+.tct-form--light .form-select {
+  background: #fff;
+  border: 1px solid rgba(60, 48, 20, 0.18);
+  color: var(--tct-ink);
+}
+
+.tct-form--light .form-control:focus,
+.tct-form--light .form-select:focus {
+  background: #fff;
+  border-color: var(--tct-gold);
+  color: var(--tct-ink);
+  box-shadow: 0 0 0 0.2rem rgba(185, 138, 47, 0.2);
+}
+
+.tct-form--light .form-control::placeholder {
+  color: rgba(60, 48, 20, 0.35);
+}
+
+.tct-form--light .tct-form-ok {
+  color: #2f7a35;
+}
+
+.tct-form--light .tct-form-err {
+  color: #b04437;
+}
+
+.tct-contact-panel {
+  background: #F0F6FF !important;
+  border: 1px solid rgba(25, 103, 210, 0.2) !important;
+  border-radius: 4px;
+  padding: 2rem;
+  color: #1E293B !important;
+}
+
+@media (min-width: 992px) {
+  .tct-page-hero + .tct-section.pt-0 .tct-contact-panel {
+    margin-top: 2.75rem;
+  }
+}
+
+.tct-contact-panel h3 {
+  font-family: var(--tct-serif);
+  color: var(--tct-brand-blue);
+  margin-bottom: 1rem;
+}
+
+.tct-contact-panel .tct-contact li {
+  color: #475569;
+  margin-bottom: 1rem;
+}
+.tct-contact-panel .tct-contact i {
+  color: var(--tct-orange);
+  margin-right: 0.5rem;
+  font-size: 1.15rem;
+}
+.tct-contact-panel .tct-contact a {
+  color: #1E293B;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.tct-contact-panel .tct-contact a:hover {
+  color: var(--tct-brand-blue);
+}
+
+.tct-map-wrap {
+  overflow: hidden;
+  border: 1px solid rgba(185, 138, 47, 0.35);
+  border-radius: 4px;
+  box-shadow: 0 12px 28px rgba(60, 48, 20, 0.12);
+}
+
+.tct-map-wrap iframe {
+  display: block;
+  width: 100%;
+  min-height: 300px;
+  border: 0;
+}
+
+.tct-note-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: rgba(185, 138, 47, 0.08);
+  border: 1px dashed rgba(185, 138, 47, 0.5);
+  border-radius: 4px;
+  padding: 1.1rem 1.2rem;
+}
+
+.tct-note-card i {
+  color: var(--tct-gold);
+  font-size: 1.3rem;
+}
+
+.tct-note-card p {
+  margin: 0;
+  color: var(--tct-ink-soft);
+  font-size: 0.95rem;
+}
+
+/* ---------- CTA band ---------- */
+.tct-cta-band {
+  background: #F5F0E6;
+  color: #061B33;
+}
+
+.tct-cta-band .tct-section-title,
+.tct-cta-band .tct-section-sub,
+.tct-cta-band .tct-eyebrow {
+  color: #061B33;
+}
+
+.tct-cta-band .tct-section-title em {
+  color: var(--tct-orange);
+}
+
+/* ============================================================
+   PREMIUM MOTION LAYER â€” preloader, reveals, tilt, shine, page
+   transitions. Respects prefers-reduced-motion globally.
+   ============================================================ */
+
+/* ---------- Page enter ---------- */
+.page-enter {
+  animation: tct-page-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes tct-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Preloader ---------- */
+.tct-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 4000;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(ellipse at 50% 38%, rgba(185, 138, 47, 0.2), transparent 55%),
+    linear-gradient(160deg, #1d1a15, #14110c);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tct-preloader.is-leaving {
+  opacity: 0;
+  transform: scale(1.06);
+  pointer-events: none;
+  visibility: hidden;
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s 0.7s;
+}
+
+.tct-preloader__glow {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(185, 138, 47, 0.22), transparent 65%);
+  animation: tct-glow-drift 6s ease-in-out infinite alternate;
+}
+
+@keyframes tct-glow-drift {
+  from {
+    transform: translate(-40px, -20px) scale(0.9);
+  }
+
+  to {
+    transform: translate(40px, 20px) scale(1.15);
+  }
+}
+
+.tct-preloader__inner {
+  position: relative;
+  text-align: center;
+}
+
+.tct-preloader__logo-wrap {
+  position: relative;
+  width: 132px;
+  height: 132px;
+  margin: 0 auto 1.4rem;
+}
+
+.tct-preloader__logo {
+  width: 108px;
+  height: 108px;
+  object-fit: cover;
+  border-radius: 50%;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
+}
+
+.tct-preloader__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: var(--tct-gold);
+  border-right-color: rgba(231, 211, 166, 0.5);
+  animation: tct-spin 1.15s linear infinite;
+}
+
+.tct-preloader__ring--2 {
+  inset: -12px;
+  border-top-color: rgba(231, 211, 166, 0.7);
+  border-right-color: transparent;
+  animation: tct-spin 1.9s linear infinite reverse;
+}
+
+@keyframes tct-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.tct-preloader__brand {
+  font-family: var(--tct-serif);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 5vw, 2.7rem);
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+.tct-preloader__brand em {
+  font-style: italic;
+  background: linear-gradient(120deg, #efd9a0, var(--tct-gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tct-preloader__tag {
+  color: rgba(244, 239, 228, 0.55);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  margin-top: 0.5rem;
+}
+
+.tct-preloader__bar {
+  width: min(320px, 70vw);
+  height: 3px;
+  margin: 1.6rem auto 0.6rem;
+  background: rgba(231, 211, 166, 0.15);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.tct-preloader__bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--tct-gold), #efd9a0);
+  border-radius: 999px;
+  transition: width 0.18s ease;
+  box-shadow: 0 0 12px rgba(231, 211, 166, 0.6);
+}
+
+.tct-preloader__pct {
+  color: rgba(244, 239, 228, 0.45);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+}
+
+/* ---------- Tilt cards ---------- */
+.tct-tilt {
+  perspective: 900px;
+  height: 100%;
+}
+
+.tct-tilt__inner {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+  height: 100%;
+}
+
+.tct-tilt__glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%),
+      rgba(255, 245, 220, 0.16),
+      transparent 55%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.tct-tilt:hover .tct-tilt__glare {
+  opacity: 1;
+}
+
+/* ---------- Reveal ---------- */
+.tct-reveal {
+  opacity: 0;
+  transform: translateY(var(--reveal-y, 36px));
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.tct-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* One-time couture light sweep as cards reveal */
+.tct-reveal--shine {
+  position: relative;
+}
+
+.tct-reveal--shine::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -30%;
+  width: 45%;
+  height: 140%;
+  transform: translateX(-120%) rotate(24deg);
+  background: linear-gradient(90deg, transparent, rgba(255, 247, 224, 0.4), transparent);
+  filter: blur(2px);
+  border-radius: 999px;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0;
+}
+
+.tct-reveal--shine.is-visible::after {
+  animation: tct-sheen-sweep 1.5s 0.55s cubic-bezier(0.3, 0, 0.2, 1) both;
+}
+
+@keyframes tct-sheen-sweep {
+  0% {
+    transform: translateX(-120%) rotate(24deg);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(180%) rotate(24deg);
+    opacity: 0;
+  }
+}
+
+/* ---------- Card hover polish ---------- */
+.tct-price-card,
+.tct-combo-featured {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+  will-change: transform;
+  height: 100%;
+}
+
+.tct-price-card:hover,
+.tct-combo-featured:hover {
+  border-color: var(--tct-gold);
+  box-shadow: 0 26px 60px rgba(60, 48, 20, 0.18);
+}
+
+/* ---------- Shine sweep buttons ---------- */
+.tct-btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.tct-btn-shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(105deg,
+      transparent,
+      rgba(255, 255, 255, 0.45),
+      transparent);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.tct-btn-shine:hover::after {
+  left: 130%;
+}
+
+/* ---------- Hero logo float + sheen (premium) ---------- */
+.tct-hero-logo {
+  animation: tct-float 7s ease-in-out infinite;
+  transition: box-shadow 0.4s ease;
+}
+
+.tct-hero-logo-frame {
+  animation: tct-frame-pulse 7s ease-in-out infinite;
+}
+
+@keyframes tct-float {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-14px) rotate(1.5deg);
+  }
+}
+
+@keyframes tct-frame-pulse {
+
+  0%,
+  100% {
+    border-color: rgba(231, 211, 166, 0.4);
+    box-shadow: 0 0 0 0 rgba(231, 211, 166, 0);
+  }
+
+  50% {
+    border-color: rgba(231, 211, 166, 0.75);
+    box-shadow: 0 0 34px 4px rgba(231, 211, 166, 0.18);
+  }
+}
+
+.tct-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 85% 15%, rgba(231, 211, 166, 0.09), transparent 45%),
+    radial-gradient(ellipse at 12% 88%, rgba(185, 138, 47, 0.1), transparent 50%);
+  animation: tct-aurora 14s ease-in-out infinite alternate;
+}
+
+@keyframes tct-aurora {
+  from {
+    opacity: 0.55;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---------- End premium motion layer ---------- */
+/* ---------- Responsive tweaks ---------- */
+@media (max-width: 991px) {
+  .tct-navbar .navbar-collapse {
+    background: rgba(29, 26, 21, 0.98);
+    padding: 1rem 1.25rem;
+    border-radius: 4px;
+    margin-top: 0.75rem;
+  }
+
+  .tct-hero {
+    min-height: 78vh;
+  }
+
+  .tct-hero-title {
+    margin-top: 5.5rem;
+  }
+
+  .tct-section {
+    padding: 4rem 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   ULTRA PREMIUM LAYER â€” couture-grade finish
+   ============================================================ */
+
+/* ---------- Global luxury scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #14110c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--tct-gold), var(--tct-gold-deep));
+  border-radius: 999px;
+  border: 2px solid #14110c;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #d9b566, var(--tct-gold));
+}
+
+/* ---------- Gold selection ---------- */
+::selection {
+  background: rgba(185, 138, 47, 0.85);
+  color: #14110c;
+}
+
+/* ---------- Cinematic preloader: letters + line ---------- */
+.tct-preloader__word {
+  font-family: var(--tct-serif);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 4.6vw, 2.6rem);
+  letter-spacing: 0.14em;
+  color: #f4efe4;
+  margin: 0.4rem 0 0;
+}
+
+.tct-preloader__letter {
+  display: inline-block;
+  opacity: 0;
+  background: linear-gradient(120deg, #f6e7bd, var(--tct-gold) 60%, #8a651f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: tct-letter-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  filter: drop-shadow(0 0 14px rgba(231, 211, 166, 0.25));
+}
+
+@keyframes tct-letter-in {
+  from {
+    opacity: 0;
+    transform: translateY(26px) rotateX(70deg);
+    filter: blur(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+    filter: blur(0);
+  }
+}
+
+.tct-preloader__line {
+  width: min(340px, 72vw);
+  height: 1px;
+  margin: 1.1rem auto 0;
+  background: rgba(231, 211, 166, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+
+.tct-preloader__line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, var(--tct-gold-soft), transparent);
+  animation: tct-line-sweep 1.6s ease-in-out infinite;
+}
+
+@keyframes tct-line-sweep {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* ---------- Hero: letter stagger ---------- */
+.tct-anim-1 {
+  animation: tct-fade-up 0.9s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.tct-anim-3 {
+  animation: tct-fade-up 0.9s 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.tct-anim-4 {
+  animation: tct-fade-up 0.9s 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.tct-anim-5 {
+  animation: tct-fade-up 0.9s 1.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes tct-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tct-hero-word {
+  display: inline-block;
+  margin-right: 0.28em;
+  white-space: nowrap;
+}
+
+.tct-hero-letter {
+  display: inline-block;
+  opacity: 0;
+  animation: tct-hero-letter 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform, opacity;
+}
+
+.tct-hero-letter.is-gold {
+  background: linear-gradient(120deg, #f6e7bd, var(--tct-gold) 55%, #a87e2c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 6px 24px rgba(185, 138, 47, 0.35));
+}
+
+@keyframes tct-hero-letter {
+  from {
+    opacity: 0;
+    transform: translateY(70px) rotate(8deg) scale(0.85);
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.tct-hero:hover .tct-hero-letter {
+  animation: none;
+  opacity: 1;
+}
+
+/* ---------- Gold dust ---------- */
+.tct-golddust {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.tct-golddust span {
+  position: absolute;
+  top: -12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f6e7bd 0%, var(--tct-gold) 60%, transparent 100%);
+  box-shadow: 0 0 8px 1px rgba(231, 211, 166, 0.55);
+  animation: tct-dust-fall linear infinite;
+}
+
+@keyframes tct-dust-fall {
+  0% {
+    transform: translateY(-4vh) translateX(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translateY(28vh) translateX(calc(var(--drift) * 0.5)) rotate(90deg);
+  }
+
+  50% {
+    transform: translateY(56vh) translateX(var(--drift)) rotate(180deg);
+  }
+
+  75% {
+    transform: translateY(80vh) translateX(calc(var(--drift) * 0.4)) rotate(270deg);
+  }
+
+  100% {
+    transform: translateY(106vh) translateX(0) rotate(360deg);
+  }
+}
+
+/* ---------- Hero orbs (aurora depth) ---------- */
+.tct-hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  pointer-events: none;
+}
+
+.tct-hero-orb--1 {
+  width: 420px;
+  height: 420px;
+  top: -120px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(185, 138, 47, 0.22), transparent 70%);
+  animation: tct-orb-1 16s ease-in-out infinite alternate;
+}
+
+.tct-hero-orb--2 {
+  width: 360px;
+  height: 360px;
+  bottom: -140px;
+  left: -120px;
+  background: radial-gradient(circle, rgba(231, 211, 166, 0.12), transparent 70%);
+  animation: tct-orb-2 20s ease-in-out infinite alternate;
+}
+
+@keyframes tct-orb-1 {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(-70px, 60px) scale(1.18);
+  }
+}
+
+@keyframes tct-orb-2 {
+  from {
+    transform: translate(0, 0) scale(1.1);
+  }
+
+  to {
+    transform: translate(90px, -50px) scale(0.92);
+  }
+}
+
+/* ---------- Scroll cue ---------- */
+.tct-scroll-cue {
+  position: absolute;
+  bottom: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(244, 239, 228, 0.5);
+  text-decoration: none;
+  font-size: 0.68rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.tct-scroll-cue:hover {
+  color: var(--tct-gold-soft);
+}
+
+.tct-scroll-cue__mouse {
+  width: 22px;
+  height: 36px;
+  border: 1.5px solid rgba(231, 211, 166, 0.5);
+  border-radius: 12px;
+  position: relative;
+}
+
+.tct-scroll-cue__mouse::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  width: 3px;
+  height: 7px;
+  margin-left: -1.5px;
+  border-radius: 999px;
+  background: var(--tct-gold-soft);
+  animation: tct-scroll-dot 1.8s ease-in-out infinite;
+}
+
+@keyframes tct-scroll-dot {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(13px);
+  }
+}
+
+/* ---------- Marquee ribbon ---------- */
+.tct-marquee {
+  overflow: hidden;
+  background: #F5F0E6;
+  border-top: 1px solid rgba(252, 67, 13, 0.2);
+  border-bottom: 1px solid rgba(252, 67, 13, 0.2);
+  padding: 0.85rem 0;
+}
+
+.tct-marquee--dark {
+  background: #F5F0E6;
+}
+
+.tct-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: tct-marquee-move 30s linear infinite;
+}
+
+.tct-marquee:hover .tct-marquee__track {
+  animation-play-state: paused;
+}
+
+.tct-marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.4rem;
+  padding-right: 1.4rem;
+  font-family: var(--tct-serif);
+  font-size: 1.05rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #061B33;
+  white-space: nowrap;
+}
+
+.tct-marquee--dark .tct-marquee__item {
+  color: #061B33;
+}
+
+.tct-marquee__diamond {
+  font-size: 0.6rem;
+  color: var(--tct-gold);
+}
+
+.tct-marquee:not(.tct-marquee--dark) .tct-marquee__diamond {
+  color: #fff7e0;
+}
+
+@keyframes tct-marquee-move {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-33.3333%);
+  }
+}
+
+.tct-marquee__item {
+  text-shadow: none;
+}
+
+/* ============================================================
+   FINISHERS LAYER â€” final couture details
+   ============================================================ */
+
+/* Gold top bar + glow when navbar condenses */
+.tct-navbar--scrolled {
+  box-shadow: inset 0 2px 0 rgba(231, 211, 166, 0.75), 0 14px 34px rgba(0, 0, 0, 0.22);
+}
+
+.tct-nav-link:hover::after,
+.tct-nav-link.active::after {
+  box-shadow: 0 0 14px rgba(231, 211, 166, 0.55);
+}
+
+/* Hero star: slow sparkle pulse */
+.tct-hero-rule {
+  animation: tct-rule-glow 3.2s ease-in-out infinite;
+}
+
+@keyframes tct-rule-glow {
+
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+/* Card corner ornaments â€” gold brackets drawn on hover */
+.tct-price-card,
+.tct-combo-featured {
+  position: relative;
+}
+
+.tct-price-card::before,
+.tct-combo-featured::before,
+.tct-price-card::after,
+.tct-combo-featured::after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.tct-price-card::before,
+.tct-combo-featured::before {
+  top: 9px;
+  left: 9px;
+  border-top: 2px solid var(--tct-gold);
+  border-left: 2px solid var(--tct-gold);
+}
+
+.tct-price-card::after,
+.tct-combo-featured::after {
+  bottom: 9px;
+  right: 9px;
+  border-bottom: 2px solid var(--tct-gold);
+  border-right: 2px solid var(--tct-gold);
+}
+
+.tct-price-card:hover::before,
+.tct-combo-featured:hover::before,
+.tct-price-card:hover::after,
+.tct-combo-featured:hover::after {
+  opacity: 1;
+}
+
+/* Photo: cinematic vignette + hover sheen sweep */
+.tct-card-photo {
+  position: relative;
+}
+
+.tct-card-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 17, 12, 0) 60%, rgba(20, 17, 12, 0.42));
+  pointer-events: none;
+}
+
+.tct-card-photo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -85%;
+  width: 50%;
+  height: 100%;
+  transform: skewX(-20deg);
+  background: linear-gradient(90deg, transparent, rgba(255, 247, 224, 0.3), transparent);
+  transition: left 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.tct-price-card:hover .tct-card-photo::before,
+.tct-combo-featured:hover .tct-card-photo::before {
+  left: 135%;
+}
+
+.tct-price-card:hover .tct-card-photo img,
+.tct-combo-featured:hover .tct-card-photo img {
+  transform: scale(1.08) rotate(0.5deg);
+}
+
+/* Featured combo price: bright gold gradient on dark card */
+.tct-combo-featured .tct-price {
+  background: linear-gradient(120deg, #f6e7bd, var(--tct-gold-soft) 55%, #d9b566);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Footer brand link: no default underline â€” clean gold wordmark */
+.tct-brand--footer {
+  text-decoration: none;
+}
+
+/* Giant footer wordmark */
+.tct-footer-wordmark {
+  font-family: var(--tct-serif);
+  font-weight: 700;
+  font-size: clamp(2rem, 7.2vw, 7rem);
+  line-height: 1;
+  text-align: center;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  user-select: none;
+  padding: 2rem 0 0.6rem;
+  margin: 0;
+  background: linear-gradient(180deg, rgba(231, 211, 166, 0.22), rgba(231, 211, 166, 0.02));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+
+  .tct-golddust span,
+  .tct-hero-orb,
+  .tct-marquee__track,
+  .tct-hero-rule,
+  .tct-preloader__line::after {
+    animation: none !important;
+  }
+
+  .tct-hero-letter,
+  .tct-preloader__letter {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* ============================================================
+   NIGHT THEME LAYER â€” elegant dark/ivory toggle
+   The gold accents NEVER change; only surfaces swap to deep,
+   warm charcoal tones with the same couture feel.
+   Toggle: navbar moon/sun button or press "T".
+   ============================================================ */
+
+/* ---------- Theme toggle button ---------- */
+.tct-theme-toggle {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(231, 211, 166, 0.4);
+  background: rgba(231, 211, 166, 0.08);
+  color: var(--tct-gold-soft);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+.tct-theme-toggle:hover {
+  border-color: var(--tct-gold);
+  color: #fff;
+  transform: rotate(20deg);
+  box-shadow: 0 0 18px rgba(231, 211, 166, 0.25);
+}
+
+.tct-theme-toggle__icon i {
+  font-size: 1.05rem;
+  display: block;
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tct-theme-toggle:hover .tct-theme-toggle__icon i {
+  transform: rotate(-30deg) scale(1.15);
+}
+
+.tct-theme-toggle__stars {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  pointer-events: none;
+}
+
+.tct-theme-toggle__stars i {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--tct-gold-soft);
+  opacity: 0;
+}
+
+.tct-theme-toggle__stars i:nth-child(1) {
+  top: 2px;
+  right: 8px;
+  animation: tct-twinkle 2.4s 0.2s ease-in-out infinite;
+}
+
+.tct-theme-toggle__stars i:nth-child(2) {
+  top: 10px;
+  right: 1px;
+  animation: tct-twinkle 2.4s 1s ease-in-out infinite;
+}
+
+.tct-theme-toggle__stars i:nth-child(3) {
+  top: 13px;
+  right: 12px;
+  animation: tct-twinkle 2.4s 1.7s ease-in-out infinite;
+}
+
+@keyframes tct-twinkle {
+
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+}
+
+.tct-night .tct-theme-toggle__stars i {
+  animation-play-state: running;
+}
+
+/* ---------- Smooth cross-fade when toggling ---------- */
+html.tct-theme-anim body {
+  transition: background 0.6s ease, color 0.6s ease;
+}
+
+html.tct-theme-anim .tct-section,
+html.tct-theme-anim .tct-section--dark,
+html.tct-theme-anim .tct-navbar,
+html.tct-theme-anim .tct-page-hero,
+html.tct-theme-anim .tct-footer,
+html.tct-theme-anim .tct-price-card,
+html.tct-theme-anim .tct-stat,
+html.tct-theme-anim .tct-note-card,
+html.tct-theme-anim .tct-contact-panel {
+  transition: background 0.6s ease, background-color 0.6s ease, border-color 0.6s ease, color 0.6s ease;
+}
+
+/* ---------- Root surfaces ---------- */
+html.tct-night body {
+  background: #171410;
+  color: #efe9dc;
+}
+
+html.tct-night .tct-section {
+  background: transparent;
+}
+
+html.tct-night .tct-section--dark {
+  background:
+    radial-gradient(ellipse at 80% 10%, rgba(185, 138, 47, 0.1), transparent 55%),
+    #14110c;
+}
+
+html.tct-night .tct-page-hero {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(252, 67, 13, 0.1), transparent 60%),
+    var(--tct-navy);
+}
+
+html.tct-night .tct-footer {
+  background: var(--tct-navy);
+}
+
+/* ---------- Typography ---------- */
+html.tct-night .tct-section-title,
+html.tct-night .tct-page-title,
+html.tct-night .tct-card-title {
+  color: #f7f2e6;
+}
+
+html.tct-night .tct-section-sub,
+html.tct-night .tct-note-card p {
+  color: rgba(239, 233, 220, 0.62);
+}
+
+html.tct-night .tct-eyebrow {
+  color: var(--tct-gold-soft);
+}
+
+/* ---------- Light cards & stats â†’ charcoal ---------- */
+html.tct-night .tct-price-card {
+  background: #221e17;
+  border-color: rgba(231, 211, 166, 0.22);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+html.tct-night .tct-price-card:hover {
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.55);
+  border-color: var(--tct-gold);
+}
+
+html.tct-night .tct-stat {
+  background: #221e17;
+  border-color: rgba(231, 211, 166, 0.25);
+}
+
+html.tct-night .tct-stat strong {
+  color: var(--tct-gold-soft);
+}
+
+html.tct-night .tct-stat span {
+  color: rgba(239, 233, 220, 0.6);
+}
+
+/* ---------- Meta/list text inside cards ---------- */
+html.tct-night .tct-meta li,
+html.tct-night .tct-combo-list li,
+html.tct-night .tct-gift-note {
+  color: rgba(239, 233, 220, 0.72);
+}
+
+html.tct-night .tct-meta i,
+html.tct-night .tct-combo-list i,
+html.tct-night .tct-gift-note i {
+  color: var(--tct-gold-soft);
+}
+
+html.tct-night .tct-save-note {
+  color: var(--tct-gold-soft);
+}
+
+/* ---------- Enquire page (light form â†’ dark) ---------- */
+html.tct-night .tct-contact-panel {
+  background: #221e17;
+  border-color: rgba(231, 211, 166, 0.22);
+}
+
+html.tct-night .tct-contact-panel * {
+  color: inherit;
+}
+
+html.tct-night .tct-contact-panel h5,
+html.tct-night .tct-contact-panel strong {
+  color: #f7f2e6;
+}
+
+html.tct-night .tct-contact-panel i {
+  color: var(--tct-gold-soft);
+}
+
+html.tct-night .tct-note-card {
+  background: rgba(231, 211, 166, 0.06);
+  border-color: rgba(231, 211, 166, 0.18);
+}
+
+html.tct-night .tct-map-wrap {
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.5);
+}
+
+/* ---------- Form controls ---------- */
+html.tct-night .tct-form--light .form-label {
+  color: rgba(239, 233, 220, 0.7);
+}
+
+html.tct-night .tct-form--light .form-control,
+html.tct-night .tct-form--light .form-select {
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(231, 211, 166, 0.25);
+  color: #efe9dc;
+}
+
+html.tct-night .tct-form--light .form-control:focus,
+html.tct-night .tct-form--light .form-select:focus {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: var(--tct-gold);
+  color: #fff;
+}
+
+html.tct-night .tct-form--light .form-control::placeholder {
+  color: rgba(239, 233, 220, 0.35);
+}
+
+html.tct-night select.form-select option {
+  background: #221e17;
+  color: #efe9dc;
+}
+
+/* ---------- About page ---------- */
+html.tct-night .tct-chips .tct-about-chip,
+html.tct-night .tct-chips .tct-chip {
+  background: #221e17;
+  border-color: rgba(231, 211, 166, 0.25);
+  color: var(--tct-gold-soft);
+}
+
+html.tct-night .tct-note-card strong {
+  color: #f7f2e6;
+}
+
+/* ---------- Luxury scrollbar follows theme ---------- */
+html.tct-night ::-webkit-scrollbar-track {
+  background: #0f0d0a;
+}
+
+html.tct-night ::-webkit-scrollbar-thumb {
+  border-color: #0f0d0a;
+}
+
+html.tct-night ::selection {
+  background: rgba(231, 211, 166, 0.85);
+  color: #14110c;
+}
+
+/* ---------- Preloader: always dark, elegant in both themes ---------- */
+html.tct-night .tct-preloader {
+  background:
+    radial-gradient(ellipse at 50% 38%, rgba(185, 138, 47, 0.2), transparent 55%),
+    linear-gradient(160deg, #1d1a15, #14110c);
+}
+
+/* ---------- Hero in night mode ---------- */
+html.tct-night .tct-hero-sub,
+html.tct-night .tct-hero-sub strong {
+  color: rgba(239, 233, 220, 0.75);
+}
+
+html.tct-night .tct-hero-sub strong {
+  color: var(--tct-gold-soft);
+}
+
+html.tct-night .tct-scroll-cue {
+  color: rgba(239, 233, 220, 0.45);
+}
+
+/* ============================================================
+   ORNAMENTAL GOLD DIVIDERS â€” â—† line â—† between sections
+   ============================================================ */
+.tct-divider {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  max-width: 520px;
+  margin: -1.6rem auto;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.tct-divider__line {
+  flex: 1;
+  height: 1px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, transparent, rgba(185, 138, 47, 0.55));
+}
+
+.tct-divider__line:last-child {
+  background: linear-gradient(90deg, rgba(185, 138, 47, 0.55), transparent);
+}
+
+/* Shimmer that travels along each line forever */
+.tct-divider__line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, #f6e7bd, transparent);
+  transform: translateX(-100%);
+  animation: tct-divider-shimmer 4.5s ease-in-out infinite;
+}
+
+.tct-divider__line:last-child::after {
+  animation-delay: 0.35s;
+}
+
+@keyframes tct-divider-shimmer {
+
+  0%,
+  55% {
+    transform: translateX(-100%);
+  }
+
+  85%,
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.tct-divider__gem {
+  color: var(--tct-gold);
+  font-size: 0.72rem;
+  filter: drop-shadow(0 0 8px rgba(231, 211, 166, 0.6));
+  animation: tct-divider-pulse 4.5s ease-in-out infinite;
+}
+
+@keyframes tct-divider-pulse {
+
+  0%,
+  100% {
+    transform: scale(0.85);
+    opacity: 0.75;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+.tct-night .tct-divider__line {
+  background: linear-gradient(90deg, transparent, rgba(231, 211, 166, 0.5));
+}
+
+.tct-night .tct-divider__line:last-child {
+  background: linear-gradient(90deg, rgba(231, 211, 166, 0.5), transparent);
+}
+
+.tct-night .tct-divider__gem {
+  color: var(--tct-gold-soft);
+}
+
+/* ============================================================
+   CINEMATIC LOGO HANDOFF â€” preloader logo "launches" into the
+   hero as a 3D coin-flip while the hero logo arrives.
+   Triggered by body.tct-launched (set by Preloader at curtain-lift).
+   ============================================================ */
+/* Preloader logo: 3D launch */
+.tct-preloader__logo-wrap {
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+body.tct-launched .tct-preloader__logo-wrap {
+  animation: tct-logo-launch 1.15s cubic-bezier(0.5, 0, 0.75, 0.4) both;
+}
+
+@keyframes tct-logo-launch {
+  0% {
+    transform: perspective(900px) translateZ(0) scale(1);
+    opacity: 1;
+  }
+
+  55% {
+    transform: perspective(900px) translateZ(320px) scale(1.55) rotateY(200deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: perspective(900px) translateZ(1300px) scale(2.4) rotateY(360deg);
+    opacity: 0;
+  }
+}
+
+body.tct-launched .tct-preloader__word,
+body.tct-launched .tct-preloader__line,
+body.tct-launched .tct-preloader__tag,
+body.tct-launched .tct-preloader__bar,
+body.tct-launched .tct-preloader__pct {
+  transition: opacity 0.45s ease;
+  opacity: 0 !important;
+}
+
+/* Hero logo: 3D arrival (plays once, then the gentle float resumes) */
+.tct-hero-arrive {
+  perspective: 1000px;
+}
+
+body.tct-launched .tct-hero-arrive {
+  animation: tct-logo-arrive 1.25s 0.15s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+
+@keyframes tct-logo-arrive {
+  0% {
+    transform: perspective(1000px) translateZ(-900px) rotateY(-320deg) scale(0.4);
+    opacity: 0;
+    filter: blur(10px);
+  }
+
+  55% {
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  100% {
+    transform: perspective(1000px) translateZ(0) rotateY(0) scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* The float animation resumes after arrival finishes */
+body.tct-launched .tct-hero-arrive .tct-hero-logo {
+  animation:
+    tct-logo-arrive 1.25s 0.15s cubic-bezier(0.2, 0.9, 0.3, 1.2) both,
+    tct-float 7s 1.5s ease-in-out infinite;
+}
+
+/* ---------- Logo circles: show the FULL logo, never crop ----------
+   The source logo is landscape (420x345) with the TCT wordmark on the
+   right â€” object-fit: cover was cutting it (looked like "half TCT").
+   contain + white badge background keeps the whole mark visible. */
+.tct-brand__logo,
+.tct-hero-logo,
+.tct-page-hero__logo,
+.tct-preloader__logo {
+  object-fit: contain !important;
+  background: #fffdf8;
+}
+
+/* Guests that never ran the preloader (reduced motion) see the logo instantly */
+@media (prefers-reduced-motion: reduce) {
+
+  body.tct-launched .tct-preloader__logo-wrap,
+  body.tct-launched .tct-hero-arrive,
+  body.tct-launched .tct-hero-arrive .tct-hero-logo {
+    animation: none !important;
+  }
+
+  .tct-divider__line::after {
+    animation: none !important;
+  }
+}
+
+/* ============================================================
+   NIGHT STARFIELD â€” magical twinkling sky in the hero (night only)
+   The layer always renders but fades out completely in ivory mode.
+   ============================================================ */
+.tct-starfield {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.1s ease;
+}
+
+html.tct-night .tct-starfield {
+  opacity: 1;
+}
+
+/* Twinkling stars */
+.tct-star {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fdf6e0 0%, rgba(231, 211, 166, 0.85) 55%, transparent 100%);
+  box-shadow: 0 0 6px 1px rgba(231, 211, 166, 0.5);
+  animation: tct-star-twinkle linear infinite;
+}
+
+.tct-star--big {
+  box-shadow: 0 0 10px 2px rgba(231, 211, 166, 0.65);
+}
+
+@keyframes tct-star-twinkle {
+
+  0%,
+  100% {
+    opacity: 0.12;
+    transform: translateX(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(var(--drift, 0px));
+  }
+}
+
+/* Shooting stars â€” rare slow gold streaks */
+.tct-shooting-star {
+  position: absolute;
+  width: 130px;
+  height: 1.5px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(246, 231, 189, 0.9), transparent);
+  filter: drop-shadow(0 0 6px rgba(231, 211, 166, 0.7));
+  opacity: 0;
+  transform: rotate(var(--angle, 24deg));
+  animation: tct-shoot linear infinite;
+}
+
+@keyframes tct-shoot {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--angle, 24deg)) translateX(-40px);
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  55% {
+    opacity: 0.9;
+  }
+
+  70%,
+  100% {
+    opacity: 0;
+    transform: rotate(var(--angle, 24deg)) translateX(340px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .tct-star,
+  .tct-shooting-star {
+    animation: none !important;
+    opacity: 0.5;
+  }
+}
+
+/* ============================================================
+   GOLD CONFETTI â€” enquiry success celebration
+   ============================================================ */
+.tct-confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3500;
+  overflow: hidden;
+}
+
+.tct-confetti__piece {
+  position: absolute;
+  top: -4vh;
+  animation: tct-confetti-fall cubic-bezier(0.25, 0.4, 0.6, 1) both;
+  will-change: transform, opacity;
+}
+
+/* gold coin */
+.tct-confetti__piece--coin {
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 30%, #f6e7bd, var(--tct-gold) 62%, #8a651f);
+  box-shadow: 0 0 10px rgba(231, 211, 166, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* silk ribbon */
+.tct-confetti__piece--ribbon {
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f6e7bd, var(--tct-gold) 60%, #a87e2c);
+  box-shadow: 0 0 8px rgba(231, 211, 166, 0.45);
+}
+
+/* cut diamond */
+.tct-confetti__piece--diamond {
+  transform: rotate(45deg);
+  background: linear-gradient(135deg, #fdf0c8, var(--tct-gold-soft) 55%, var(--tct-gold));
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  filter: drop-shadow(0 0 6px rgba(231, 211, 166, 0.6));
+}
+
+@keyframes tct-confetti-fall {
+  0% {
+    transform: translateY(-4vh) translateX(0) rotate(0) rotateY(0);
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(104vh) translateX(var(--drift, 0px)) rotate(calc(var(--spin, 1) * 540deg)) rotateY(calc(var(--spin, 1) * 720deg)) rotateX(calc(var(--spin, 1) * 300deg));
+    opacity: 0;
+  }
+}
+
+/* ---------- Success seal â€” animated gold check ---------- */
+.tct-success {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid rgba(185, 138, 47, 0.45);
+  border-radius: 4px;
+  background: linear-gradient(135deg, rgba(231, 211, 166, 0.14), rgba(185, 138, 47, 0.07));
+}
+
+.tct-success__seal {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: #14110c;
+  background: linear-gradient(135deg, #e9cf94, var(--tct-gold));
+  box-shadow: 0 0 0 4px rgba(231, 211, 166, 0.22), 0 8px 22px rgba(185, 138, 47, 0.4);
+  animation: tct-seal-pop 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  position: relative;
+}
+
+.tct-success__seal::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(231, 211, 166, 0.5);
+  animation: tct-seal-ring 1.8s ease-out infinite;
+}
+
+@keyframes tct-seal-pop {
+  0% {
+    transform: scale(0) rotate(-30deg);
+  }
+
+  70% {
+    transform: scale(1.15) rotate(6deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes tct-seal-ring {
+  from {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+
+  to {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+/* ============================================================
+   MOBILE POLISH LAYER â€” phones & tablets (â‰¤ 991px / â‰¤ 575px)
+   Fixes: hero content sliding under the fixed navbar, scroll-cue
+   colliding with CTA buttons, oversized section spacing, and
+   general small-screen alignment. PC styles are untouched.
+   ============================================================ */
+@media (max-width: 991px) {
+
+  /* Hero: always start BELOW the fixed navbar + brand row */
+  .tct-hero {
+    padding: 7.5rem 0 4.5rem;
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+
+  .tct-hero-title {
+    margin-top: 0;
+    /* old fixed-px hack replaced by hero padding */
+  }
+
+  .tct-eyebrow {
+    letter-spacing: 0.2em;
+    font-size: 0.72rem;
+  }
+
+  /* The animated mouse cue sits on top of CTA buttons on phones â€” hide it */
+  .tct-scroll-cue {
+    display: none;
+  }
+
+  /* Hamburger button: gold pill with GOLD icon (Bootstrap default is dark
+     strokes on our dark navbar â€” that is why it looked invisible) */
+  .tct-navbar .navbar-toggler {
+    border: 1px solid rgba(231, 211, 166, 0.55);
+    border-radius: 10px;
+    padding: 0.5rem 0.65rem;
+    background: rgba(231, 211, 166, 0.1);
+    box-shadow: 0 0 0 0 rgba(231, 211, 166, 0);
+    transition: all 0.3s ease;
+  }
+
+  .tct-navbar .navbar-toggler:hover,
+  .tct-navbar .navbar-toggler:focus {
+    box-shadow: 0 0 14px rgba(231, 211, 166, 0.3);
+    border-color: var(--tct-gold-soft);
+  }
+
+  .tct-navbar .navbar-toggler-icon {
+    width: 1.5em;
+    height: 1.5em;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(231,%20211,%20166,%200.95)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.4' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
+
+  /* Our Crafts chips: smaller + tighter so long names never overflow */
+  .tct-chips {
+    gap: 0.5rem !important;
+  }
+
+  .tct-chips .tct-chip--lg,
+  .tct-chips .tct-chip {
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
+    padding: 0.34rem 0.62rem;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+
+  /* Airier but shorter sections for small screens */
+  .tct-section {
+    padding: 4.25rem 0;
+  }
+
+  .tct-divider {
+    margin: -1.1rem auto;
+    max-width: 320px;
+  }
+
+  /* Giant footer wordmark wraps gracefully instead of overflowing */
+  .tct-footer-wordmark {
+    white-space: normal;
+    line-height: 1.08;
+    font-size: clamp(1.5rem, 9vw, 2.8rem);
+    padding-top: 1.5rem;
+  }
+}
+
+@media (max-width: 575px) {
+
+  /* Kill the oversized gap between navbar and hero content:
+     natural height + snug padding instead of forced 100svh centering */
+  .tct-hero {
+    padding: 6.4rem 0 3.75rem;
+    min-height: auto;
+  }
+
+  .tct-hero-title {
+    margin-top: 0.4rem;
+  }
+
+  .tct-hero-sub {
+    font-size: 1.02rem;
+  }
+
+  /* Full-width stacked CTA buttons â€” premium mobile pattern */
+  .tct-hero .d-flex.flex-wrap.gap-3 {
+    flex-direction: column;
+    gap: 0.75rem !important;
+  }
+
+  .tct-hero .d-flex.flex-wrap.gap-3 .btn {
+    width: 100%;
+  }
+
+  .tct-section-title {
+    font-size: clamp(1.9rem, 8.2vw, 2.5rem);
+  }
+
+  .tct-brand__text {
+    font-size: 1.18rem;
+  }
+
+  .tct-brand__logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 0.5rem;
+  }
+
+  .tct-theme-toggle {
+    width: 38px;
+    height: 38px;
+  }
+
+  .tct-page-hero {
+    padding: 7.5rem 0 2.75rem;
+  }
+
+  .tct-stat strong {
+    font-size: 1.7rem;
+  }
+
+  /* Hero frame hidden on phones â€” the hairline crossed full-width buttons;
+     a clean edge looks more premium on small screens */
+  .tct-hero::before {
+    display: none;
+  }
+
+  /* Hero title: "TCT Fashion Hub" fits on ONE line on phones */
+  .tct-hero-title {
+    font-size: clamp(2.1rem, 10vw, 2.9rem);
+    line-height: 1.1;
+  }
+
+  /* Our Crafts chips: phone-perfect pill grid */
+  .tct-chips .tct-chip--lg,
+  .tct-chips .tct-chip {
+    font-size: 0.6rem;
+    letter-spacing: 0.09em;
+    padding: 0.32rem 0.6rem;
+  }
+
+  .tct-card-title {
+    font-size: 1.3rem;
+  }
+}
+
+/* ============================================================
+   PAYMENT MODAL â€” always-light "receipt" surface, theme-proof
+   The dialog keeps dark ink on ivory in BOTH themes so text is
+   always readable (fixes night-mode invisibility), plus a
+   premium entrance animation and gold accent line.
+   ============================================================ */
+.tct-payment-backdrop {
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  animation: tct-backdrop-in 0.35s ease both;
+}
+
+@keyframes tct-backdrop-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.tct-payment-dialog {
+  animation: tct-modal-pop 0.5s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+  overflow: hidden;
+}
+
+.tct-payment-dialog::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--tct-gold), transparent);
+}
+
+@keyframes tct-modal-pop {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Explicit ink colors inside the dialog â€” never change with theme */
+.tct-payment-dialog .tct-card-title {
+  color: #23201b !important;
+}
+
+.tct-payment-dialog .tct-eyebrow {
+  color: var(--tct-gold-deep) !important;
+}
+
+.tct-payment-dialog .tct-payment-summary {
+  color: #5c5548 !important;
+}
+
+.tct-payment-dialog .tct-payment-summary strong {
+  color: var(--tct-gold-deep) !important;
+}
+
+.tct-payment-dialog .tct-btn-ghost {
+  color: var(--tct-gold-deep) !important;
+  border-color: rgba(185, 138, 47, 0.55);
+}
+
+.tct-payment-dialog .tct-payment-close {
+  color: #23201b;
+  border-color: rgba(39, 33, 24, 0.25);
+}
+
+.tct-payment-dialog .tct-payment-close:hover {
+  transform: rotate(90deg);
+  transition: transform 0.35s ease;
+}
+
+/* Two-column body: actions left, scan-and-pay QR right */
+.tct-payment-body {
+  display: flex;
+  gap: 2rem;
+  align-items: stretch;
+  margin-top: 0.4rem;
+}
+
+.tct-payment-actions {
+  flex: 1 1 58%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tct-payment-actions .btn {
+  padding: 0.85rem 1.4rem;
+  font-size: 0.95rem;
+}
+
+.tct-payment-qr {
+  flex: 0 0 38%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.2rem;
+  border: 1px dashed rgba(185, 138, 47, 0.5);
+  border-radius: 8px;
+  background: linear-gradient(160deg, rgba(231, 211, 166, 0.1), rgba(185, 138, 47, 0.05));
+}
+
+.tct-payment-qr svg {
+  width: 100%;
+  max-width: 210px;
+  height: auto;
+}
+
+.tct-payment-qr__box {
+  width: 100%;
+  max-width: 210px;
+  padding: 0.55rem;
+  background: #fffdf8;
+  border: 1.5px solid var(--tct-gold);
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(60, 48, 20, 0.16);
+}
+
+.tct-payment-qr__label {
+  margin: 0.65rem 0 0.1rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #23201b;
+}
+
+.tct-payment-qr__sub {
+  margin: 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #96702a;
+}
+
+@media (max-width: 560px) {
+  .tct-payment-body {
+    flex-direction: column;
+  }
+
+  .tct-payment-qr {
+    flex: 1 1 auto;
+  }
+}
+
+/* ============================================================
+   CLASS INFO MODAL â€” premium "craft dossier" popup
+   Clicking any class / combo card opens this elegant sheet.
+   Ivory receipt surface in BOTH themes (theme-proof ink),
+   portal-rendered, closes via X / backdrop / Escape.
+   ============================================================ */
+.tct-info-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: rgba(19, 15, 9, 0.66);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: tct-backdrop-in 0.35s ease both;
+}
+
+.tct-info-dialog {
+  position: relative;
+  width: min(680px, 100%);
+  max-height: min(88vh, 860px);
+  overflow-y: auto;
+  scrollbar-width: none;
+  background: linear-gradient(168deg, #fffdf8 0%, #f8efdb 100%);
+  border: 1px solid rgba(185, 138, 47, 0.5);
+  border-radius: 16px;
+  box-shadow:
+    0 34px 90px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+  animation: tct-modal-pop 0.5s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+}
+
+.tct-info-dialog::-webkit-scrollbar {
+  display: none;
+}
+
+.tct-info-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 6;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 253, 248, 0.94);
+  border: 1px solid rgba(185, 138, 47, 0.55);
+  color: #23201b;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.tct-info-close:hover {
+  transform: rotate(90deg);
+  box-shadow: 0 0 0 4px rgba(185, 138, 47, 0.18);
+}
+
+.tct-info-photo {
+  position: relative;
+  height: clamp(190px, 30vh, 290px);
+  overflow: hidden;
+}
+
+.tct-info-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tct-info-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 16, 10, 0) 55%, rgba(20, 16, 10, 0.55) 100%);
+}
+
+.tct-info-badge {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  z-index: 2;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #f3ddab, #d4a94a);
+  color: #241d12;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.tct-info-body {
+  padding: 1.5rem 1.75rem 1.75rem;
+}
+
+.tct-info-body .tct-eyebrow {
+  margin-bottom: 0.35rem;
+  color: var(--tct-gold-deep) !important;
+}
+
+.tct-info-dialog .tct-info-title {
+  margin: 0 0 0.65rem;
+  font-size: clamp(1.45rem, 3vw, 1.85rem);
+  line-height: 1.15;
+  color: #23201b !important;
+}
+
+.tct-info-priceRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.tct-info-dialog .tct-price {
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  -webkit-text-fill-color: currentColor;
+  color: var(--tct-gold-deep) !important;
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.tct-info-dialog .tct-price .tct-price__unit {
+  color: inherit;
+}
+
+.tct-info-chip {
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  background: #241f16;
+  color: #ecd9a8;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.tct-info-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.9rem 0 1.1rem;
+}
+
+.tct-info-fact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(185, 138, 47, 0.4);
+  background: rgba(185, 138, 47, 0.08);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #3c352a;
+}
+
+.tct-info-fact i {
+  color: var(--tct-gold-deep);
+}
+
+.tct-info-label {
+  margin: 0 0 0.55rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #96702a;
+}
+
+.tct-info-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem 1.2rem;
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.tct-info-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #2c261d;
+}
+
+.tct-info-list li i {
+  color: var(--tct-gold-deep);
+}
+
+.tct-info-desc {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #5c5548;
+}
+
+.tct-info-gift {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  margin: 0 0 1.2rem;
+  padding: 0.8rem 1rem;
+  border: 1px dashed rgba(185, 138, 47, 0.55);
+  border-radius: 10px;
+  background: linear-gradient(160deg, rgba(231, 211, 166, 0.16), rgba(185, 138, 47, 0.06));
+  font-size: 0.85rem;
+  color: #4a4234;
+}
+
+.tct-info-gift i {
+  color: var(--tct-gold-deep);
+  margin-top: 0.1rem;
+}
+
+.tct-info-dialog .tct-btn-ghost {
+  color: var(--tct-gold-deep) !important;
+  border-color: rgba(185, 138, 47, 0.55);
+  background: transparent;
+}
+
+/* Clickable cards + "View details" hint */
+.tct-card-clickable {
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.tct-card-clickable:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.35);
+  border-color: rgba(185, 138, 47, 0.65);
+}
+
+.tct-view-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-bottom: 0.55rem;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--tct-gold-deep);
+  opacity: 0.85;
+}
+
+.tct-combo-featured .tct-view-hint {
+  color: var(--tct-gold);
+}
+
+@media (max-width: 560px) {
+  .tct-info-body {
+    padding: 1.2rem 1.1rem 1.3rem;
+  }
+
+  .tct-info-list {
+    grid-template-columns: 1fr;
+  }
+
+  .tct-info-photo {
+    height: 190px;
+  }
+}
+
+/* ============================================================
+   PREMIUM GLASS UI LAYER
+   Frosted, layered glass surfaces that look rich in BOTH themes
+   (ivory day / warm charcoal night).
+   VISUAL ONLY â€” card sizes, paddings, fonts and grid alignment are
+   untouched, so the class / combo layout never moves.
+   ============================================================ */
+
+/* ---------- Glass tokens ---------- */
+:root {
+  --tct-glass: linear-gradient(152deg, rgba(255, 255, 255, 0.9), rgba(246, 239, 224, 0.74));
+  --tct-glass-soft: linear-gradient(152deg, rgba(255, 255, 255, 0.78), rgba(246, 239, 224, 0.56));
+  --tct-glass-edge: rgba(185, 138, 47, 0.26);
+  --tct-glass-shine: rgba(255, 255, 255, 0.9);
+  --tct-glass-drop: 0 14px 40px rgba(60, 48, 20, 0.1);
+  --tct-glass-drop-hi: 0 30px 66px rgba(60, 48, 20, 0.18);
+  --tct-aurora-a: rgba(185, 138, 47, 0.17);
+  --tct-aurora-b: rgba(231, 211, 166, 0.26);
+}
+
+html.tct-night {
+  --tct-glass: linear-gradient(152deg, rgba(50, 43, 33, 0.8), rgba(28, 24, 19, 0.74));
+  --tct-glass-soft: linear-gradient(152deg, rgba(46, 39, 30, 0.66), rgba(25, 21, 17, 0.58));
+  --tct-glass-edge: rgba(231, 211, 166, 0.2);
+  --tct-glass-shine: rgba(255, 255, 255, 0.07);
+  --tct-glass-drop: 0 16px 44px rgba(0, 0, 0, 0.5);
+  --tct-glass-drop-hi: 0 34px 74px rgba(0, 0, 0, 0.62);
+  --tct-aurora-a: rgba(185, 138, 47, 0.22);
+  --tct-aurora-b: rgba(231, 211, 166, 0.07);
+}
+
+/* ---------- Ambient aurora behind the page: gives the glass depth ---------- */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(58% 42% at 8% 2%, var(--tct-aurora-a), transparent 62%),
+    radial-gradient(54% 44% at 94% 98%, var(--tct-aurora-b), transparent 60%);
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* Anchor jumps clear the fixed navbar instead of hiding beneath it */
+html {
+  scroll-padding-top: 5.75rem;
+}
+
+/* ---------- Navbar ---------- */
+.tct-navbar {
+  background: #F0F6FF !important;
+  border-bottom: 1px solid #e2e8f0;
+}
+.tct-navbar--scrolled {
+  background: #F0F6FF !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 3px solid var(--tct-brand-blue);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Gradient underline nav links */
+.tct-nav-link {
+  color: #1E293B !important;
+  font-weight: 500;
+  padding: 0.5rem 1rem !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  position: relative;
+  transition: none;
+}
+
+.tct-nav-link:hover,
+.tct-nav-link.active {
+  background: linear-gradient(90deg, var(--tct-brand-blue), var(--tct-orange)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  box-shadow: none !important;
+}
+
+.tct-nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--tct-brand-blue), var(--tct-orange));
+  transition: width 0.3s ease;
+  display: block !important;
+}
+
+.tct-nav-link:hover::after,
+.tct-nav-link.active::after {
+  width: 80%;
+}
+
+/* ---------- Buttons: Solid Blue ---------- */
+.tct-btn-gold {
+  background: var(--tct-brand-blue) !important;
+  background-image: none !important;
+  color: #ffffff !important;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(25, 103, 210, 0.3);
+  border: none;
+}
+
+.tct-btn-gold:hover {
+  background: #1557b0 !important;
+  background-image: none !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 16px rgba(25, 103, 210, 0.4);
+}
+
+.tct-btn-ghost {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(231, 211, 166, 0.42);
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.tct-btn-ghost:hover {
+  background: rgba(231, 211, 166, 0.16);
+  border-color: var(--tct-gold-soft);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.tct-btn-outline-gold {
+  background: var(--tct-glass-soft);
+  border-color: rgba(185, 138, 47, 0.45);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+html.tct-night .tct-btn-outline-gold {
+  background: var(--tct-glass-soft);
+  border-color: rgba(231, 211, 166, 0.35);
+  color: var(--tct-gold-soft) !important;
+}
+
+html.tct-night .tct-btn-outline-gold:hover {
+  background: var(--tct-gold);
+  color: #241d0e !important;
+}
+
+/* Visible, elegant keyboard focus for every control */
+.tct-btn-gold:focus-visible,
+.tct-btn-ghost:focus-visible,
+.tct-btn-outline-gold:focus-visible,
+.tct-theme-toggle:focus-visible,
+.tct-payment-close:focus-visible,
+.tct-info-close:focus-visible,
+.tct-nav-link:focus-visible,
+.tct-social-links a:focus-visible,
+.tct-map-wrap:focus-within,
+.form-control:focus-visible,
+.form-select:focus-visible {
+  outline: 2px solid rgba(185, 138, 47, 0.85);
+  outline-offset: 3px;
+}
+
+/* ---------- Glass surfaces: cards, stats, note card, chips ---------- */
+.tct-price-card,
+.tct-stat,
+.tct-note-card,
+.tct-chip {
+  background: var(--tct-glass);
+  border: 1px solid var(--tct-glass-edge);
+  box-shadow: var(--tct-glass-drop), inset 0 1px 0 var(--tct-glass-shine);
+}
+
+html.tct-night .tct-price-card,
+html.tct-night .tct-stat,
+html.tct-night .tct-note-card,
+html.tct-night .tct-chip {
+  background: var(--tct-glass);
+  border-color: var(--tct-glass-edge);
+  box-shadow: var(--tct-glass-drop), inset 0 1px 0 var(--tct-glass-shine);
+}
+
+.tct-price-card:hover,
+.tct-stat:hover {
+  box-shadow: var(--tct-glass-drop-hi), inset 0 1px 0 var(--tct-glass-shine);
+}
+
+html.tct-night .tct-price-card:hover,
+html.tct-night .tct-stat:hover {
+  box-shadow: var(--tct-glass-drop-hi), inset 0 1px 0 var(--tct-glass-shine);
+}
+
+/* Softer, slightly rounded couture corners (never affects layout) */
+.tct-price-card,
+.tct-combo-featured,
+.tct-stat,
+.tct-value-card,
+.tct-about-panel,
+.tct-contact-panel,
+.tct-note-card,
+.tct-map-wrap {
+  border-radius: 14px;
+}
+
+.tct-price-card .tct-card-photo,
+.tct-combo-featured .tct-card-photo {
+  border-radius: 13px 13px 0 0;
+}
+
+.tct-note-card {
+  border: 1px dashed rgba(185, 138, 47, 0.45);
+}
+
+html.tct-night .tct-note-card {
+  border-color: rgba(231, 211, 166, 0.28);
+}
+
+.tct-chip {
+  backdrop-filter: blur(8px) saturate(140%);
+  -webkit-backdrop-filter: blur(8px) saturate(140%);
+}
+
+html.tct-night .tct-chip {
+  color: var(--tct-gold-soft) !important;
+}
+
+/* Featured combo stays the deliberate dark hero card â€” now with a gold rim */
+.tct-combo-featured {
+  background: linear-gradient(152deg, rgba(46, 39, 29, 0.95), rgba(26, 22, 17, 0.94));
+  border: 1.5px solid rgba(185, 138, 47, 0.75);
+  box-shadow:
+    0 26px 66px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(231, 211, 166, 0.12) inset,
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.tct-combo-featured:hover {
+  box-shadow:
+    0 34px 80px rgba(0, 0, 0, 0.55),
+    0 0 34px rgba(185, 138, 47, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Panels that stay intentionally dark in BOTH themes (studio voice) */
+.tct-value-card {
+  background: linear-gradient(152deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(231, 211, 166, 0.22);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.09), 0 18px 44px rgba(0, 0, 0, 0.26);
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+}
+
+.tct-about-panel,
+.tct-contact-panel {
+  background: linear-gradient(152deg, rgba(52, 45, 34, 0.94), rgba(28, 24, 19, 0.92));
+  border: 1px solid rgba(185, 138, 47, 0.35);
+  box-shadow: 0 22px 54px rgba(60, 48, 20, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.tct-map-wrap {
+  background: var(--tct-glass-soft);
+  border: 1px solid var(--tct-glass-edge);
+  box-shadow: var(--tct-glass-drop), inset 0 1px 0 var(--tct-glass-shine);
+}
+
+/* Real blur only where the GPU cost is invisible (desktop hover devices) */
+@media (hover: hover) and (min-width: 992px) {
+
+  .tct-price-card,
+  .tct-combo-featured,
+  .tct-stat,
+  .tct-note-card,
+  .tct-chips .tct-chip {
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+  }
+}
+
+/* ---------- Forms: frosted fields with a gold focus halo ---------- */
+.tct-form--light .form-control,
+.tct-form--light .form-select {
+  background: var(--tct-glass-soft);
+  border: 1px solid rgba(185, 138, 47, 0.28);
+  border-radius: 12px;
+  box-shadow: inset 0 1px 3px rgba(60, 48, 20, 0.06);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.tct-form--light .form-control:focus,
+.tct-form--light .form-select:focus {
+  border-color: var(--tct-gold);
+  box-shadow: 0 0 0 0.22rem rgba(185, 138, 47, 0.18), inset 0 1px 3px rgba(60, 48, 20, 0.05);
+}
+
+html.tct-night .tct-form--light .form-control,
+html.tct-night .tct-form--light .form-select {
+  background: var(--tct-glass-soft);
+  border-color: rgba(231, 211, 166, 0.24);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+html.tct-night .tct-form--light .form-control:focus,
+html.tct-night .tct-form--light .form-select:focus {
+  border-color: var(--tct-gold);
+  box-shadow: 0 0 0 0.22rem rgba(185, 138, 47, 0.24);
+}
+
+/* Night theme keeps the custom gold chevron (specificity must beat the
+   night glass background rule above) */
+html.tct-night .tct-form--light select.form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 10'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23e7d3a6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.15rem center;
+  background-size: 13px 9px;
+}
+
+/* ---------- Footer: glass social pills + gold rim ---------- */
+.tct-footer {
+  border-top: 1px solid rgba(231, 211, 166, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.tct-social-links a {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px) saturate(140%);
+  -webkit-backdrop-filter: blur(8px) saturate(140%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.tct-social-links a:hover {
+  box-shadow: 0 12px 26px rgba(185, 138, 47, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.tct-footer-links a {
+  display: inline-block;
+  transition: color 0.22s ease, transform 0.22s ease;
+}
+
+.tct-footer-links a:hover {
+  transform: translateX(4px);
+}
+
+.tct-maps-link:hover {
+  color: var(--tct-gold-soft);
+}
+
+/* ---------- Marquee: soft glass fade at both edges ---------- */
+.tct-marquee {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+}
+
+/* ============================================================
+   MODALS â€” theme-aware frosted glass
+   Ivory glass in day mode, warm charcoal glass at night.
+   The QR panel always keeps a light surface so every UPI app
+   can still scan it.
+   ============================================================ */
+.tct-payment-dialog,
+.tct-info-dialog {
+  background: linear-gradient(158deg, rgba(255, 253, 248, 0.95), rgba(245, 237, 222, 0.9));
+  backdrop-filter: blur(26px) saturate(165%);
+  -webkit-backdrop-filter: blur(26px) saturate(165%);
+  border: 1px solid rgba(185, 138, 47, 0.45);
+  box-shadow:
+    0 40px 110px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+html.tct-night .tct-payment-dialog,
+html.tct-night .tct-info-dialog {
+  background: linear-gradient(158deg, rgba(46, 39, 30, 0.92), rgba(22, 19, 15, 0.9));
+  border-color: rgba(231, 211, 166, 0.3);
+  box-shadow:
+    0 42px 120px rgba(0, 0, 0, 0.72),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.tct-payment-backdrop,
+.tct-info-backdrop {
+  backdrop-filter: blur(9px) saturate(130%);
+  -webkit-backdrop-filter: blur(9px) saturate(130%);
+}
+
+/* Night-mode ink so nothing ever turns invisible on the dark glass */
+html.tct-night .tct-payment-dialog .tct-card-title,
+html.tct-night .tct-info-dialog .tct-info-title {
+  color: #f7f2e6 !important;
+}
+
+html.tct-night .tct-payment-dialog .tct-eyebrow,
+html.tct-night .tct-info-body .tct-eyebrow {
+  color: var(--tct-gold-soft) !important;
+}
+
+html.tct-night .tct-payment-dialog .tct-payment-summary {
+  color: rgba(239, 233, 220, 0.72) !important;
+  border-color: rgba(231, 211, 166, 0.18);
+}
+
+html.tct-night .tct-payment-dialog .tct-payment-summary strong {
+  color: var(--tct-gold-soft) !important;
+}
+
+html.tct-night .tct-payment-dialog .tct-payment-close,
+html.tct-night .tct-info-close {
+  color: #f4efe4;
+  border-color: rgba(231, 211, 166, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+html.tct-night .tct-payment-dialog .tct-btn-ghost,
+html.tct-night .tct-info-dialog .tct-btn-ghost {
+  color: var(--tct-gold-soft) !important;
+  border-color: rgba(231, 211, 166, 0.4);
+}
+
+html.tct-night .tct-payment-qr {
+  border-color: rgba(231, 211, 166, 0.28);
+  background: rgba(231, 211, 166, 0.06);
+}
+
+html.tct-night .tct-payment-qr__label {
+  color: #f4efe4;
+}
+
+html.tct-night .tct-payment-qr__sub {
+  color: var(--tct-gold-soft);
+}
+
+html.tct-night .tct-info-dialog .tct-price {
+  color: var(--tct-gold-soft) !important;
+}
+
+html.tct-night .tct-info-label {
+  color: var(--tct-gold-soft);
+}
+
+html.tct-night .tct-info-fact {
+  color: #ece5d6;
+  border-color: rgba(231, 211, 166, 0.3);
+  background: rgba(231, 211, 166, 0.08);
+}
+
+html.tct-night .tct-info-list li {
+  color: rgba(239, 233, 220, 0.9);
+}
+
+html.tct-night .tct-info-desc {
+  color: rgba(239, 233, 220, 0.66);
+}
+
+html.tct-night .tct-info-gift {
+  color: rgba(239, 233, 220, 0.82);
+  border-color: rgba(231, 211, 166, 0.35);
+  background: rgba(231, 211, 166, 0.06);
+}
+
+html.tct-night .tct-info-chip {
+  background: rgba(231, 211, 166, 0.92);
+  color: #241d0e;
+}
+
+/* ---------- Mobile menu: frosted glass panel ---------- */
+@media (max-width: 991px) {
+  .tct-navbar .navbar-collapse {
+    background: rgba(22, 19, 14, 0.84);
+    backdrop-filter: blur(22px) saturate(180%);
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+    border: 1px solid rgba(231, 211, 166, 0.18);
+    border-radius: 16px;
+    box-shadow: 0 26px 64px rgba(0, 0, 0, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .tct-nav-link {
+    display: block;
+    margin: 0.15rem 0;
+  }
+}
+
+/* ============================================================
+   LEADERSHIP â€” CEO & MD cards on the About page
+   Glass card + studio portrait plate, elegant in both themes.
+   ============================================================ */
+.tct-leader-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--tct-glass);
+  border: 1px solid var(--tct-glass-edge);
+  border-radius: 16px;
+  box-shadow: var(--tct-glass-drop), inset 0 1px 0 var(--tct-glass-shine);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease,
+    border-color 0.5s ease;
+}
+
+.tct-leader-card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(185, 138, 47, 0.6);
+  box-shadow: var(--tct-glass-drop-hi), inset 0 1px 0 var(--tct-glass-shine);
+}
+
+html.tct-night .tct-leader-card {
+  background: var(--tct-glass);
+  border-color: var(--tct-glass-edge);
+  box-shadow: var(--tct-glass-drop), inset 0 1px 0 var(--tct-glass-shine);
+}
+
+.tct-leader-photo {
+  position: relative;
+  height: clamp(340px, 36vw, 430px);
+  overflow: hidden;
+  border-bottom: 1px solid rgba(185, 138, 47, 0.3);
+  background: linear-gradient(165deg, #efe3c9, #d9c49a);
+}
+
+.tct-leader-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tct-leader-card:hover .tct-leader-photo img {
+  transform: scale(1.045);
+}
+
+.tct-leader-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+      rgba(20, 16, 10, 0) 62%,
+      rgba(20, 16, 10, 0.38) 100%);
+  pointer-events: none;
+}
+
+.tct-leader-body {
+  position: relative;
+  padding: 1.5rem 1.6rem 1.7rem;
+  text-align: center;
+}
+
+.tct-leader-name {
+  font-family: var(--tct-serif);
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  margin: 0 0 0.4rem;
+  color: var(--tct-ink);
+}
+
+/* Glass role badge floating on the portrait */
+.tct-leader-role {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  z-index: 3;
+  transform: translateX(-50%);
+  margin: 0;
+  max-width: calc(100% - 26px);
+  padding: 0.44rem 1rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg,
+      rgba(238, 216, 164, 0.97),
+      rgba(185, 138, 47, 0.95));
+  color: #241d0e;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  animation: tct-badge-float 4.5s ease-in-out 1s infinite alternate;
+}
+
+@keyframes tct-badge-float {
+  from {
+    transform: translate(-50%, 0);
+  }
+
+  to {
+    transform: translate(-50%, -5px);
+  }
+}
+
+/* One-shot couture sheen that crosses the portrait on hover */
+.tct-leader-shine {
+  position: absolute;
+  top: -25%;
+  left: -45%;
+  width: 40%;
+  height: 150%;
+  z-index: 2;
+  transform: translateX(-140%) rotate(22deg);
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 247, 224, 0.45),
+      transparent);
+  filter: blur(2px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tct-leader-card:hover .tct-leader-shine {
+  animation: tct-leader-sheen 1.05s cubic-bezier(0.3, 0, 0.2, 1) both;
+}
+
+@keyframes tct-leader-sheen {
+  0% {
+    transform: translateX(-140%) rotate(22deg);
+    opacity: 0;
+  }
+
+  22% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(340%) rotate(22deg);
+    opacity: 0;
+  }
+}
+
+/* Animated gold "signature" underline under each name */
+.tct-leader-name {
+  position: relative;
+  z-index: 1;
+}
+
+.tct-leader-name::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+  width: 0;
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, var(--tct-gold), transparent);
+  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tct-leader-card:hover .tct-leader-name::after {
+  width: 88%;
+}
+
+/* Shimmer travelling along the gold rule */
+.tct-leader-rule::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.95),
+      transparent);
+  transform: translateX(-100%);
+  animation: tct-rule-shimmer 3.4s 1.2s ease-in-out infinite;
+}
+
+@keyframes tct-rule-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  55%,
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Decorative quote watermark behind the bio */
+.tct-leader-quote {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--tct-serif);
+  font-size: 7rem;
+  line-height: 1;
+  color: var(--tct-gold);
+  opacity: 0.07;
+  pointer-events: none;
+}
+
+html.tct-night .tct-leader-quote {
+  opacity: 0.1;
+}
+
+/* Staggered entrance once the card scrolls into view */
+.tct-reveal.is-visible .tct-leader-photo {
+  animation: tct-leader-in 0.85s 0.05s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.tct-reveal.is-visible .tct-leader-name {
+  animation: tct-leader-in 0.85s 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.tct-reveal.is-visible .tct-leader-rule {
+  animation: tct-leader-in 0.85s 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.tct-reveal.is-visible .tct-leader-bio {
+  animation: tct-leader-in 0.85s 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes tct-leader-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tilt wrapper corners match the rounded glass card */
+.tct-leader-tilt .tct-tilt__inner,
+.tct-leader-tilt .tct-tilt__glare {
+  border-radius: 16px;
+}
+
+.tct-leader-rule {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 46px;
+  height: 1px;
+  margin: 0 auto 0.95rem;
+  overflow: hidden;
+  background: linear-gradient(90deg, transparent, var(--tct-gold), transparent);
+}
+
+.tct-leader-bio {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: 0.94rem;
+  line-height: 1.68;
+  color: var(--tct-ink-soft);
+}
+
+html.tct-night .tct-leader-name {
+  color: #f7f2e6;
+}
+
+/* The role badge is a solid gold pill in BOTH themes, so its ink must
+   stay dark â€” a gold-on-gold override would make it unreadable. */
+html.tct-night .tct-leader-role {
+  color: #241d0e;
+}
+
+html.tct-night .tct-leader-bio {
+  color: rgba(239, 233, 220, 0.66);
+}
+
+html.tct-night .tct-leader-photo {
+  border-bottom-color: rgba(231, 211, 166, 0.22);
+  background: linear-gradient(165deg, #2b2419, #1d1913);
+}
+
+/* Studio portraits carry a bright backdrop â€” calm it down at night so the
+   glass card and the gold badge stay the brightest things on the card. */
+html.tct-night .tct-leader-photo img {
+  filter: brightness(0.86) contrast(1.06) saturate(0.94);
+}
+
+html.tct-night .tct-leader-photo::after {
+  background: linear-gradient(180deg,
+      rgba(12, 10, 7, 0.18) 0%,
+      rgba(12, 10, 7, 0.1) 45%,
+      rgba(12, 10, 7, 0.55) 100%);
+}
+
+@media (max-width: 767px) {
+  .tct-leader-photo {
+    height: 330px;
+  }
+
+  .tct-leader-body {
+    padding: 1.25rem 1.2rem 1.4rem;
+  }
+}
+
+/* ============================================================
+   LEADER CARD â€” INSTAGRAM LINK
+   A small glass Instagram chip hides in the top-right corner of
+   each portrait and glides into view on hover/focus (always
+   visible on touch devices where there is no hover).
+   ============================================================ */
+
+.tct-leader-insta {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.25rem;
+  line-height: 1;
+  text-decoration: none;
+  background: linear-gradient(135deg,
+      rgba(240, 148, 51, 0.92),
+      rgba(220, 39, 67, 0.92) 48%,
+      rgba(188, 24, 136, 0.92));
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  opacity: 0;
+  transform: translate(8px, -8px) scale(0.85);
+  pointer-events: none;
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease;
+}
+
+.tct-leader-card:hover .tct-leader-insta,
+.tct-leader-insta:focus-visible {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+  pointer-events: auto;
+}
+
+.tct-leader-insta:hover,
+.tct-leader-insta:focus-visible {
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.45),
+    0 0 0 4px rgba(255, 255, 255, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transform: translate(0, 0) scale(1.08);
+}
+
+/* No hover (phones/tablets): keep it visible and tappable */
+@media (hover: none) {
+  .tct-leader-insta {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+}
+
+/* ============================================================
+   NIGHT-MODE COMPLETENESS
+   Two things used to stay stubbornly light when the theme was
+   flipped: Chrome's autofill paint and the embedded Google map.
+   ============================================================ */
+
+/* Browser autofill (saved name/phone) keeps a white/yellow box by design â€”
+   this repaints it in charcoal so the form never flashes light-mode. */
+html.tct-night .tct-form--light .form-control:-webkit-autofill,
+html.tct-night .tct-form--light .form-select:-webkit-autofill,
+html.tct-night .tct-form--light .form-control:-webkit-autofill:hover,
+html.tct-night .tct-form--light .form-control:-webkit-autofill:focus,
+html.tct-night .tct-form--light textarea:-webkit-autofill {
+  -webkit-text-fill-color: #efe9dc;
+  -webkit-box-shadow: 0 0 0 1000px #221e17 inset;
+  box-shadow: 0 0 0 1000px #221e17 inset;
+  caret-color: #efe9dc;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* The embedded map is always a bright tile â€” gently invert it at night
+   so it sits inside the dark page instead of glowing like light mode. */
+html.tct-night .tct-map-wrap iframe {
+  filter: invert(0.9) hue-rotate(180deg) saturate(0.8) brightness(0.95) contrast(0.92);
+}
+
+/* Native <option> menus follow the theme too */
+html.tct-night select.form-select option,
+html.tct-night select.form-select optgroup {
+  background-color: #221e17;
+  color: #efe9dc;
+}
+
+/* ============================================================
+   FLOATING WHATSAPP BUTTON
+   One glass pill, fixed bottom-right on every page, day and
+   night. Sits BELOW the modals (payment 1050 / info 2100) so a
+   modal can always cover it, but above all normal page content.
+   ============================================================ */
+
+.tct-wa-float {
+  position: fixed;
+  right: clamp(0.9rem, 2.5vw, 1.5rem);
+  bottom: clamp(0.9rem, 2.5vw, 1.5rem);
+  z-index: 1040;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(145deg,
+      rgba(255, 255, 255, 0.92),
+      rgba(240, 248, 242, 0.78));
+  border: 1px solid rgba(37, 211, 102, 0.45);
+  box-shadow:
+    0 10px 26px rgba(24, 26, 20, 0.18),
+    0 0 0 5px rgba(37, 211, 102, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  text-decoration: none;
+  transition:
+    transform 0.28s cubic-bezier(0.22, 0.68, 0.32, 1.2),
+    box-shadow 0.28s ease;
+}
+
+.tct-wa-float .bi-whatsapp {
+  font-size: 1.75rem;
+  line-height: 1;
+  color: #25d366;
+  filter: drop-shadow(0 2px 5px rgba(37, 211, 102, 0.45));
+  transition: color 0.28s ease, transform 0.28s ease;
+}
+
+/* Soft breathing ring that invites the tap */
+.tct-wa-float-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(37, 211, 102, 0.55);
+  pointer-events: none;
+  animation: tct-wa-pulse 2.6s ease-out infinite;
+}
+
+@keyframes tct-wa-pulse {
+  0% {
+    opacity: 0.85;
+    transform: scale(0.92);
+  }
+
+  70% {
+    opacity: 0;
+    transform: scale(1.45);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.45);
+  }
+}
+
+.tct-wa-float:hover,
+.tct-wa-float:focus-visible {
+  transform: translateY(-3px) scale(1.06);
+  box-shadow:
+    0 16px 32px rgba(24, 26, 20, 0.22),
+    0 0 0 7px rgba(37, 211, 102, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.tct-wa-float:hover .bi-whatsapp,
+.tct-wa-float:focus-visible .bi-whatsapp {
+  transform: scale(1.08);
+}
+
+.tct-wa-float:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Respect reduced-motion users: no pulsing ring */
+@media (prefers-reduced-motion: reduce) {
+  .tct-wa-float-ring {
+    animation: none;
+    opacity: 0.35;
+    transform: none;
+  }
+}
+
+/* --- Night theme: green stays, chrome goes charcoal --- */
+html.tct-night .tct-wa-float {
+  background: linear-gradient(145deg,
+      rgba(30, 26, 20, 0.86),
+      rgba(20, 18, 14, 0.8));
+  border-color: rgba(37, 211, 102, 0.38);
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.5),
+    0 0 0 5px rgba(37, 211, 102, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+html.tct-night .tct-wa-float:hover,
+html.tct-night .tct-wa-float:focus-visible {
+  box-shadow:
+    0 16px 32px rgba(0, 0, 0, 0.55),
+    0 0 0 7px rgba(37, 211, 102, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+html.tct-night .tct-wa-float .bi-whatsapp {
+  color: #4be382;
+  filter: drop-shadow(0 2px 5px rgba(37, 211, 102, 0.5));
+}
+
+html.tct-night .tct-wa-float-ring {
+  border-color: rgba(75, 227, 130, 0.45);
+}
+
+/* Tiny phones: slightly smaller so it never crowds the content */
+@media (max-width: 420px) {
+  .tct-wa-float {
+    width: 50px;
+    height: 50px;
+  }
+
+  .tct-wa-float .bi-whatsapp {
+    font-size: 1.55rem;
+  }
+}
+
+/* ============================================================
+   PREMIUM MICRO-POLISH
+   Small, theme-aware upgrades that never touch the class/combo
+   card grids (their geometry is contract-frozen).
+   ============================================================ */
+
+/* Gold buttons: dark-ink sheen sweep on hover + tactile press */
+.tct-btn-gold {
+  position: relative;
+  overflow: hidden;
+}
+
+.tct-btn-gold::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-110%) skewX(-18deg);
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(36, 29, 14, 0.18),
+      transparent);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.tct-btn-gold:hover::after {
+  transform: translateX(110%) skewX(-18deg);
+}
+
+.tct-btn-gold:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 4px 12px rgba(185, 138, 47, 0.3);
+}
+
+/* Keyboard focus halo in gold for every interactive control */
+.tct-btn-gold:focus-visible,
+.tct-btn-ghost:focus-visible,
+.tct-btn-outline-gold:focus-visible,
+.tct-navbar .nav-link:focus-visible,
+.tct-chip:focus-visible {
+  outline: 2px solid rgba(185, 138, 47, 0.85);
+  outline-offset: 3px;
+}
+
+/* Footer links: gold underline grows from the left on hover */
+.tct-footer a {
+  position: relative;
+  text-decoration: none;
+}
+
+.tct-footer a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--tct-gold), rgba(185, 138, 47, 0.25));
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tct-footer a:hover::after,
+.tct-footer a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Craft chips: gentle gold lift on hover, respecting reduced motion */
+.tct-chip {
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.tct-chip:hover {
+  transform: translateY(-3px);
+  border-color: rgba(185, 138, 47, 0.55);
+  box-shadow: 0 10px 22px rgba(185, 138, 47, 0.18);
+}
+
+/* In-copy text links: animated gold underline sweep */
+.tct-section-sub a,
+.tct-quote-by a,
+main p a:not([class]) {
+  color: inherit;
+  text-decoration: none;
+  background-image: linear-gradient(90deg,
+      var(--tct-gold),
+      var(--tct-gold));
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tct-section-sub a:hover,
+.tct-quote-by a:hover,
+main p a:not([class]):hover {
+  background-size: 100% 1px;
+}
+
+/* Leader cards: subtle lifted edges on hover (photo/body visuals unchanged) */
+.tct-leader-tilt:hover .tct-leader-card {
+  border-color: rgba(185, 138, 47, 0.55);
+}
+
+/* Respect reduced-motion globally for the new polish */
+@media (prefers-reduced-motion: reduce) {
+
+  .tct-btn-gold::after,
+  .tct-footer a::after,
+  .tct-chip {
+    transition: none;
+  }
+
+  .tct-btn-gold:active {
+    transform: none;
+  }
+}
+
+/* ============================================================
+   ENQUIRE FORM UPGRADE
+   Breathing room below the page hero, a soft entrance, and a
+   shake-and-glow nudge when "Select Class" is skipped.
+   ============================================================ */
+
+/* Space between the hero's underline and the form panel */
+.tct-page-hero+.tct-section.pt-0 .tct-form--entrance {
+  margin-top: 2.75rem;
+}
+
+/* Soft rise-in when the page loads */
+@keyframes tct-form-rise {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.tct-form--entrance {
+  animation: tct-form-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+/* Error state: gold-red border + one gentle horizontal shake */
+.tct-form--light .form-select.tct-select-error {
+  border-color: rgba(196, 74, 44, 0.85);
+  box-shadow: 0 0 0 0.2rem rgba(196, 74, 44, 0.18);
+}
+
+@keyframes tct-select-shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-7px);
+  }
+
+  40% {
+    transform: translateX(6px);
+  }
+
+  60% {
+    transform: translateX(-4px);
+  }
+
+  80% {
+    transform: translateX(3px);
+  }
+}
+
+.tct-select-error {
+  animation: tct-select-shake 0.45s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tct-form--entrance {
+    animation: none;
+  }
+
+  .tct-select-error {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   ENQUIRE FORM â€” CLASSY GLASS REDESIGN
+   Softly-rounded "couture" card with gold corner ornaments,
+   pill CTA, custom gold select chevron, and matching rounded
+   side panels. Cosmetics only â€” layout/fields untouched.
+   ============================================================ */
+
+/* --- The card itself: deep glass with gold corner brackets --- */
+form.tct-form--light {
+  border-radius: 22px;
+  background: linear-gradient(160deg,
+      rgba(255, 253, 248, 0.94),
+      rgba(248, 241, 226, 0.86));
+  border: 1px solid rgba(185, 138, 47, 0.38);
+  box-shadow:
+    0 24px 60px rgba(60, 48, 20, 0.16),
+    0 2px 8px rgba(60, 48, 20, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px) saturate(130%);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+  padding: 2.4rem 2.2rem;
+  position: relative;
+}
+
+/* Gold corner brackets â€” the "jammunu" couture detail */
+form.tct-form--light::before,
+form.tct-form--light::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
+}
+
+form.tct-form--light::before {
+  top: 11px;
+  left: 11px;
+  border-top: 2px solid var(--tct-gold);
+  border-left: 2px solid var(--tct-gold);
+  border-top-left-radius: 14px;
+}
+
+form.tct-form--light::after {
+  bottom: 11px;
+  right: 11px;
+  border-bottom: 2px solid var(--tct-gold);
+  border-right: 2px solid var(--tct-gold);
+  border-bottom-right-radius: 14px;
+}
+
+html.tct-night form.tct-form--light {
+  background: linear-gradient(160deg,
+      rgba(48, 42, 32, 0.92),
+      rgba(30, 26, 20, 0.88));
+  border-color: rgba(231, 211, 166, 0.26);
+  box-shadow:
+    0 26px 60px rgba(0, 0, 0, 0.55),
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+/* --- Labels: finer, more couture spacing --- */
+.tct-form--light .form-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  margin-bottom: 0.55rem;
+}
+
+/* --- Inputs & select: deeper rounded, tactile --- */
+.tct-form--light .form-control,
+.tct-form--light .form-select {
+  border-radius: 14px;
+  padding: 0.82rem 1.05rem;
+}
+
+.tct-form--light .form-control:hover:not(:focus),
+.tct-form--light .form-select:hover:not(:focus) {
+  border-color: rgba(185, 138, 47, 0.6);
+}
+
+.tct-form--light textarea.form-control {
+  min-height: 128px;
+  resize: vertical;
+}
+
+/* Custom gold chevron on the select (native arrow removed) */
+.tct-form--light select.form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 10'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23b98a2f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.15rem center;
+  background-size: 13px 9px;
+  padding-right: 2.9rem;
+  cursor: pointer;
+}
+
+/* --- Submit button: gold pill with soft halo --- */
+.tct-form .tct-btn-gold {
+  border-radius: 999px;
+  padding: 1.05rem 2rem;
+  letter-spacing: 0.18em;
+  font-size: 0.9rem;
+  box-shadow:
+    0 14px 30px rgba(185, 138, 47, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.tct-form .tct-btn-gold:disabled {
+  opacity: 0.75;
+}
+
+/* --- Side column panels: same rounded language --- */
+.tct-contact-panel {
+  border-radius: 20px;
+  box-shadow:
+    0 20px 48px rgba(20, 16, 10, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  padding: 2.2rem;
+}
+
+.tct-map-wrap {
+  border-radius: 20px;
+  box-shadow: 0 16px 40px rgba(60, 48, 20, 0.16);
+}
+
+.tct-note-card {
+  border-radius: 16px;
+  border-style: solid;
+  background: linear-gradient(150deg,
+      rgba(185, 138, 47, 0.14),
+      rgba(185, 138, 47, 0.06));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+html.tct-night .tct-note-card {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Small phones: slightly tighter padding, keep the elegance */
+@media (max-width: 576px) {
+  form.tct-form--light {
+    padding: 1.8rem 1.4rem;
+    border-radius: 18px;
+  }
+
+  .tct-contact-panel {
+    padding: 1.7rem 1.5rem;
+  }
+}
+
+/* ============================================================
+   CHAT ASSISTANT â€” LOGO LAUNCHER + GOLD GLASS PANEL
+   The floating bubble carries the company logo; the panel is a
+   fully on-site assistant with typing dots, quick chips and a
+   WhatsApp handover. Sits below modals (z-index 1040).
+   ============================================================ */
+
+.tct-chat-launcher {
+  position: fixed;
+  right: clamp(0.9rem, 2.5vw, 1.5rem);
+  bottom: clamp(0.9rem, 2.5vw, 1.5rem);
+  z-index: 1040;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid rgba(185, 138, 47, 0.85);
+  background: linear-gradient(160deg, #fdf8ec, #f3e7c8);
+  box-shadow:
+    0 12px 30px rgba(20, 16, 10, 0.32),
+    0 0 0 6px rgba(185, 138, 47, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  display: grid;
+  place-items: center;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+}
+
+.tct-chat-launcher:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow:
+    0 18px 36px rgba(20, 16, 10, 0.38),
+    0 0 0 9px rgba(185, 138, 47, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.tct-chat-launcher__logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.tct-chat-launcher__ring {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 2px solid rgba(185, 138, 47, 0.5);
+  pointer-events: none;
+  animation: tct-wa-pulse 2.8s ease-out infinite;
+}
+
+.tct-chat-launcher__dot {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #7dffb0, #25d366);
+  border: 2px solid #fdf8ec;
+}
+
+.tct-chat-launcher .bi-x-lg {
+  font-size: 1.2rem;
+  color: var(--tct-gold-deep);
+}
+
+.tct-chat-launcher--night {
+  background: linear-gradient(160deg, #3a3327, #241f17);
+  border-color: rgba(231, 211, 166, 0.65);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.6),
+    0 0 0 6px rgba(231, 211, 166, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.tct-chat-launcher--night .tct-chat-launcher__dot {
+  border-color: #241f17;
+}
+
+.tct-chat-launcher--night .bi-x-lg {
+  color: var(--tct-gold-soft);
+}
+
+/* --- Panel --- */
+.tct-chat-panel {
+  position: fixed;
+  right: clamp(0.9rem, 2.5vw, 1.5rem);
+  bottom: calc(clamp(0.9rem, 2.5vw, 1.5rem) + 74px);
+  z-index: 1040;
+  width: min(92vw, 372px);
+  height: min(560px, calc(100dvh - 140px));
+  display: flex;
+  flex-direction: column;
+  border-radius: 22px;
+  overflow: hidden;
+  background: linear-gradient(165deg, #fffdf8, #f6efdc);
+  border: 1px solid rgba(185, 138, 47, 0.45);
+  box-shadow:
+    0 30px 70px rgba(20, 16, 10, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  opacity: 0;
+  transform: translateY(18px) scale(0.96);
+  transform-origin: bottom right;
+  pointer-events: none;
+  transition:
+    opacity 0.32s ease,
+    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tct-chat-panel.is-open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.tct-chat-panel--night {
+  background: linear-gradient(165deg, #322b20, #1d1913);
+  border-color: rgba(231, 211, 166, 0.3);
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Header */
+.tct-chat-panel__head {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.85rem 1rem;
+  background: linear-gradient(135deg, rgba(185, 138, 47, 0.16), rgba(185, 138, 47, 0.05));
+  border-bottom: 1px solid rgba(185, 138, 47, 0.3);
+}
+
+.tct-chat-panel__logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(185, 138, 47, 0.6);
+}
+
+.tct-chat-panel__title {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+  flex: 1;
+}
+
+.tct-chat-panel__title strong {
+  font-family: var(--tct-serif);
+  font-size: 1rem;
+  color: var(--tct-ink);
+}
+
+.tct-chat-panel__title span {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: #1d7a43;
+  font-weight: 600;
+}
+
+.tct-chat-online-dot {
+  font-size: 0.42rem;
+  vertical-align: 2px;
+  margin-right: 3px;
+}
+
+.tct-chat-panel--night .tct-chat-panel__title strong {
+  color: var(--tct-ivory);
+}
+
+.tct-chat-panel--night .tct-chat-panel__title span {
+  color: #5bd98a;
+}
+
+.tct-chat-panel__wa {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: #25d366;
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid rgba(37, 211, 102, 0.35);
+  text-decoration: none;
+  font-size: 1.05rem;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.tct-chat-panel__wa:hover {
+  transform: scale(1.1);
+  background: rgba(37, 211, 102, 0.2);
+}
+
+/* Messages */
+.tct-chat-panel__list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(185, 138, 47, 0.4) transparent;
+}
+
+.tct-chat-msg {
+  max-width: 86%;
+  padding: 0.7rem 0.95rem;
+  border-radius: 16px;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  animation: tct-chat-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes tct-chat-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.tct-chat-msg p {
+  margin: 0 0 0.15rem;
+}
+
+.tct-chat-msg p:last-child {
+  margin-bottom: 0;
+}
+
+.tct-chat-msg p.is-bullet {
+  padding-left: 0.4rem;
+}
+
+.tct-chat-msg--bot {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(185, 138, 47, 0.25);
+  color: var(--tct-ink);
+  border-bottom-left-radius: 5px;
+  box-shadow: 0 4px 14px rgba(60, 48, 20, 0.08);
+}
+
+.tct-chat-panel--night .tct-chat-msg--bot {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(231, 211, 166, 0.2);
+  color: var(--tct-ivory);
+}
+
+.tct-chat-msg--user {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #d9b566, var(--tct-gold));
+  color: #241d0e;
+  font-weight: 500;
+  border-bottom-right-radius: 5px;
+  box-shadow: 0 6px 16px rgba(185, 138, 47, 0.3);
+}
+
+.tct-chat-msg__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+  padding: 0.42rem 0.95rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #d9b566, var(--tct-gold));
+  color: #241d0e !important;
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-decoration: none;
+  box-shadow: 0 6px 14px rgba(185, 138, 47, 0.3);
+  transition: transform 0.25s ease;
+}
+
+.tct-chat-msg__cta:hover {
+  transform: translateY(-2px);
+}
+
+/* Typing dots */
+.tct-chat-msg--typing {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  padding: 0.8rem 1rem;
+}
+
+.tct-chat-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--tct-gold);
+  opacity: 0.4;
+  animation: tct-chat-bounce 1.2s ease-in-out infinite;
+}
+
+.tct-chat-dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.tct-chat-dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes tct-chat-bounce {
+
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+
+  30% {
+    transform: translateY(-5px);
+    opacity: 1;
+  }
+}
+
+/* Quick chips */
+.tct-chat-panel__chips {
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.55rem 0.9rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tct-chat-panel__chips::-webkit-scrollbar {
+  display: none;
+}
+
+.tct-chat-panel__chips button {
+  flex-shrink: 0;
+  border: 1px solid rgba(185, 138, 47, 0.45);
+  background: rgba(185, 138, 47, 0.08);
+  color: var(--tct-gold-deep);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.38rem 0.85rem;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.tct-chat-panel__chips button:hover {
+  background: rgba(185, 138, 47, 0.18);
+  transform: translateY(-1px);
+}
+
+.tct-chat-panel--night .tct-chat-panel__chips button {
+  color: var(--tct-gold-soft);
+  border-color: rgba(231, 211, 166, 0.35);
+  background: rgba(231, 211, 166, 0.07);
+}
+
+/* Input bar */
+.tct-chat-panel__input {
+  display: flex;
+  gap: 0.55rem;
+  padding: 0.7rem 0.9rem 0.9rem;
+  border-top: 1px solid rgba(185, 138, 47, 0.25);
+}
+
+.tct-chat-panel__input input {
+  flex: 1;
+  border: 1px solid rgba(185, 138, 47, 0.35);
+  border-radius: 999px;
+  padding: 0.6rem 1.05rem;
+  font-size: 0.86rem;
+  background: #fff;
+  color: var(--tct-ink);
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tct-chat-panel__input input:focus {
+  border-color: var(--tct-gold);
+  box-shadow: 0 0 0 0.2rem rgba(185, 138, 47, 0.16);
+}
+
+.tct-chat-panel--night .tct-chat-panel__input input {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(231, 211, 166, 0.3);
+  color: var(--tct-ivory);
+}
+
+.tct-chat-panel__input button {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #d9b566, var(--tct-gold));
+  color: #241d0e;
+  font-size: 1rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(185, 138, 47, 0.35);
+  transition: transform 0.25s ease;
+}
+
+.tct-chat-panel__input button:hover {
+  transform: scale(1.08) rotate(-8deg);
+}
+
+@media (max-width: 420px) {
+  .tct-chat-launcher {
+    width: 54px;
+    height: 54px;
+  }
+
+  .tct-chat-launcher__logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .tct-chat-panel {
+    width: calc(100vw - 2.6rem);
+    height: min(520px, calc(100dvh - 120px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .tct-chat-launcher__ring,
+  .tct-chat-dot,
+  .tct-chat-msg {
+    animation: none;
+  }
+
+  .tct-chat-panel,
+  .tct-chat-launcher {
+    transition: none;
+  }
+}
+
+/* ============================================================
+   CLASS SELECT â€” ADVANCED GOLD DROPDOWN
+   Searchable, grouped (Singles / Combos) with live prices.
+   Replaces the native <select> on the enquiry form.
+   ============================================================ */
+
+.tct-class-select {
+  position: relative;
+}
+
+.tct-class-select__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  text-align: left;
+  background: var(--tct-glass-soft);
+  border: 1px solid rgba(185, 138, 47, 0.28);
+  border-radius: 14px;
+  padding: 0.82rem 1.05rem;
+  font-size: 1rem;
+  color: var(--tct-ink);
+  cursor: pointer;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tct-class-select__trigger:hover {
+  border-color: rgba(185, 138, 47, 0.6);
+}
+
+.tct-class-select__trigger.has-value {
+  border-color: rgba(185, 138, 47, 0.55);
+  box-shadow: inset 0 1px 3px rgba(60, 48, 20, 0.05);
+}
+
+.tct-class-select__placeholder {
+  color: rgba(60, 48, 20, 0.4);
+}
+
+.tct-class-select__chev {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  color: var(--tct-gold-deep);
+}
+
+.tct-class-select__chev.is-open {
+  transform: rotate(180deg);
+}
+
+html.tct-night .tct-class-select__trigger {
+  background: var(--tct-glass-soft);
+  border-color: rgba(231, 211, 166, 0.24);
+  color: var(--tct-ivory);
+}
+
+html.tct-night .tct-class-select__placeholder {
+  color: rgba(239, 233, 220, 0.4);
+}
+
+html.tct-night .tct-class-select__chev {
+  color: var(--tct-gold-soft);
+}
+
+/* Panel */
+.tct-class-select__panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 30;
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(165deg, #fffdf8, #f6efdc);
+  border: 1px solid rgba(185, 138, 47, 0.45);
+  box-shadow: 0 24px 50px rgba(20, 16, 10, 0.3);
+  opacity: 0;
+  transform: translateY(-8px) scale(0.98);
+  transform-origin: top center;
+  pointer-events: none;
+  transition:
+    opacity 0.25s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tct-class-select__panel.is-open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+html.tct-night .tct-class-select__panel {
+  background: linear-gradient(165deg, #322b20, #1d1913);
+  border-color: rgba(231, 211, 166, 0.3);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* Search */
+.tct-class-select__search {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid rgba(185, 138, 47, 0.22);
+  color: var(--tct-gold-deep);
+}
+
+html.tct-night .tct-class-select__search {
+  color: var(--tct-gold-soft);
+  border-bottom-color: rgba(231, 211, 166, 0.18);
+}
+
+.tct-class-select__search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.88rem;
+  color: var(--tct-ink);
+}
+
+html.tct-night .tct-class-select__search input {
+  color: var(--tct-ivory);
+}
+
+.tct-class-select__search input::placeholder {
+  color: rgba(60, 48, 20, 0.35);
+}
+
+html.tct-night .tct-class-select__search input::placeholder {
+  color: rgba(239, 233, 220, 0.35);
+}
+
+/* Group label + options */
+.tct-class-select__group {
+  margin: 0;
+  padding: 0.6rem 1rem 0.3rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--tct-gold-deep);
+}
+
+html.tct-night .tct-class-select__group {
+  color: var(--tct-gold-soft);
+}
+
+.tct-class-select__list {
+  max-height: 264px;
+  overflow-y: auto;
+  padding-bottom: 0.4rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(185, 138, 47, 0.4) transparent;
+}
+
+.tct-class-select__opt {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  text-align: left;
+  padding: 0.6rem 1rem;
+  background: transparent;
+  border: none;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.tct-class-select__opt:hover {
+  background: rgba(185, 138, 47, 0.1);
+  border-left-color: var(--tct-gold);
+}
+
+.tct-class-select__opt.is-active {
+  background: rgba(185, 138, 47, 0.14);
+  border-left-color: var(--tct-gold-deep);
+}
+
+.tct-class-select__name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--tct-ink);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+html.tct-night .tct-class-select__name {
+  color: var(--tct-ivory);
+}
+
+.tct-class-select__badge {
+  font-style: normal;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #241d0e;
+  background: linear-gradient(135deg, #d9b566, var(--tct-gold));
+  padding: 0.14rem 0.5rem;
+  border-radius: 999px;
+}
+
+.tct-class-select__price {
+  font-size: 0.72rem;
+  color: var(--tct-gold-deep);
+  font-weight: 600;
+}
+
+html.tct-night .tct-class-select__price {
+  color: var(--tct-gold-soft);
+}
+
+.tct-class-select__empty {
+  padding: 0.9rem 1rem;
+  font-size: 0.84rem;
+  color: rgba(60, 48, 20, 0.5);
+  margin: 0;
+}
+
+html.tct-night .tct-class-select__empty {
+  color: rgba(239, 233, 220, 0.45);
+}
+
+/* Error state mirrors the old select error */
+.tct-class-select.tct-select-error .tct-class-select__trigger {
+  border-color: rgba(196, 74, 44, 0.85);
+  box-shadow: 0 0 0 0.2rem rgba(196, 74, 44, 0.18);
+  animation: tct-select-shake 0.45s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .tct-class-select__panel,
+  .tct-class-select__chev {
+    transition: none;
+  }
+
+  .tct-class-select.tct-select-error .tct-class-select__trigger {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   NEW PREMIUM BLUE & ORANGE REDESIGN CSS (Overrides old styles)
+   ============================================================ */
+
+.tct-section-light {
+  background-color: var(--tct-bg-light);
+  padding: 60px 0;
+}
+
+@media (max-width: 768px) {
+  .tct-section-light {
+    padding: 40px 0;
+  }
+}
+
+.tct-premium-card {
+  background: var(--tct-bg-card);
+  border: 1px solid #E7E0D8 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03) !important;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  position: relative;
+}
+
+.tct-premium-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08) !important;
+}
+
+.tct-card-photo-wrapper {
+  position: relative;
+  height: 200px;
+  /* Fixed height to keep cards uniform */
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid #E7E0D8;
+}
+
+.tct-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.tct-premium-card:hover .tct-card-img {
+  transform: scale(1.05);
+}
+
+.tct-badge-floating {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--tct-orange);
+  color: #FFF;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+  z-index: 2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tct-card-body {
+  padding: 1.25rem !important;
+}
+
+.tct-card-category {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--tct-orange);
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.tct-card-title {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--tct-navy);
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+
+.tct-price-block {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.tct-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--tct-navy);
+  margin: 0;
+}
+
+.tct-price-unit {
+  font-size: 1rem;
+  vertical-align: top;
+  margin-right: 2px;
+}
+
+.tct-save-note {
+  font-size: 0.85rem;
+  color: var(--tct-orange);
+  font-weight: 500;
+  margin: 0;
+}
+
+.tct-compact-list {
+  margin: 0;
+  padding: 0;
+}
+
+.tct-compact-list li {
+  font-size: 0.9rem;
+  color: var(--tct-text-main);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tct-check-icon {
+  color: var(--tct-orange);
+  font-size: 1.1rem;
+}
+
+.tct-orange-icon {
+  color: var(--tct-orange);
+}
+
+.tct-gift-note {
+  font-size: 0.85rem;
+  color: var(--tct-text-muted);
+  margin: 0;
+}
+
+.tct-level-badge {
+  font-size: 0.7rem;
+  color: var(--tct-orange);
+  border: 1px solid var(--tct-orange);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.tct-btn-primary {
+  background-color: var(--tct-navy);
+  color: #FFF !important;
+  border: none;
+  font-weight: 500;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.tct-btn-primary:hover {
+  background-color: var(--tct-brand-blue);
+  box-shadow: 0 4px 8px rgba(29, 78, 216, 0.3);
+}
+
+.tct-btn-text {
+  background: transparent;
+  color: var(--tct-navy) !important;
+  border: 1px solid #E7E0D8;
+  font-weight: 500;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.tct-btn-text:hover {
+  border-color: var(--tct-navy);
+  background: #F8FAFC;
+}
+
+/* Premium Single Classes Redesign */
+.tct-premium-section {
+  background-color: #FDFBF7;
+  /* warm ivory background */
+  padding: 5rem 0;
+}
+
+.tct-premium-eyebrow {
+  color: #EA580C;
+  /* elegant orange */
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+/* Navbar active and hover styling updates */
+.tct-navbar .nav-link.active {
+  background-color: var(--tct-gold) !important;
+  color: var(--tct-night) !important;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.tct-navbar .nav-link:hover:not(.active) {
+  background-color: var(--tct-gold-soft);
+  color: var(--tct-night) !important;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+/* Premium Hero Enhancements */
+.tct-hero {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--tct-navy);
+}
+
+.tct-hero-bg-parallax {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  transition: transform 0.1s ease-out;
+  z-index: 0;
+}
+
+@media (max-width: 992px) {
+  .tct-hero-bg-parallax {
+    transform: none !important;
+  }
+}
+
+/* Make "Hub" text premium gradient */
+.tct-hero-letter.is-gold {
+  background: linear-gradient(135deg, var(--tct-orange) 0%, var(--tct-gold-deep) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(252, 67, 13, 0.4);
+}
+
+/* Premium Logo Glow */
+.tct-hero-logo-frame {
+  position: relative;
+  transition: transform 0.1s ease-out;
+  z-index: 10;
+}
+
+.tct-hero-logo {
+  width: 240px !important;
+  height: 240px !important;
+  object-fit: cover;
+  border-radius: 50%;
+  background-color: #FDFBF7;
+  /* warm ivory background */
+  border: 3px solid rgba(252, 67, 13, 0.7) !important;
+  /* brand orange border */
+  box-shadow: 0 10px 40px rgba(252, 67, 13, 0.25), 0 0 20px rgba(252, 67, 13, 0.4) !important;
+  animation: float-logo-premium 6s ease-in-out infinite !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+  padding: 4px;
+  /* subtle spacing inside the border */
+}
+
+.tct-hero-logo:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 15px 50px rgba(252, 67, 13, 0.4), 0 0 30px rgba(252, 67, 13, 0.6) !important;
+  animation-play-state: paused !important;
+}
+
+@media (max-width: 991.98px) {
+  .tct-hero-logo {
+    width: 150px !important;
+    height: 150px !important;
+    margin: 2rem auto 0;
+  }
+}
+
+.tct-hero-logo-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110%;
+  height: 110%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(252, 67, 13, 0.15) 0%, rgba(252, 67, 13, 0) 70%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes float-logo-premium {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* Premium CTA Buttons */
+.tct-btn-premium-gold {
+  background: linear-gradient(135deg, var(--tct-orange) 0%, var(--tct-gold-deep) 100%);
+  color: #fff !important;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.5rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(252, 67, 13, 0.4);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.tct-btn-premium-gold::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.tct-btn-premium-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(252, 67, 13, 0.6);
+}
+
+.tct-btn-premium-gold:hover::after {
+  opacity: 1;
+  left: 100%;
+}
+
+.tct-btn-premium-outline {
+  background: rgba(0, 116, 237, 0.1);
+  color: var(--tct-orange) !important;
+  border: 1px solid rgba(252, 67, 13, 0.5);
+  border-radius: 8px;
+  padding: 0.8rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+  text-decoration: none;
+}
+
+.tct-btn-premium-outline:hover {
+  background: rgba(252, 67, 13, 0.1);
+  border-color: var(--tct-orange);
+  transform: translateY(-2px);
+  color: #FFF !important;
+}
+
+/* Interactive Scrolling Indicator */
+.tct-scroll-cue-premium {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--tct-orange);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  z-index: 20;
+}
+
+.tct-scroll-cue-premium:hover {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(252, 67, 13, 0.5);
+}
+
+.tct-scroll-cue__mouse-premium {
+  width: 24px;
+  height: 36px;
+  border: 2px solid rgba(252, 67, 13, 0.5);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.tct-scroll-cue-premium:hover .tct-scroll-cue__mouse-premium {
+  border-color: var(--tct-orange);
+  box-shadow: 0 0 15px rgba(252, 67, 13, 0.3);
+}
+
+.tct-scroll-cue__wheel {
+  width: 4px;
+  height: 8px;
+  background-color: var(--tct-orange);
+  border-radius: 2px;
+  margin-top: 4px;
+  animation: scroll-wheel 1.5s infinite;
+}
+
+@keyframes scroll-wheel {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+}
+
+/* Premium Marquee Updates */
+.tct-marquee__item {
+  transition: color 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.tct-marquee__item:hover {
+  color: var(--tct-orange) !important;
+}
+
+.tct-marquee:hover .tct-marquee__track {
+  animation-play-state: paused;
+}
+
+.tct-marquee__diamond {
+  color: var(--tct-orange);
+  font-size: 0.6em;
+  margin: 0 2rem;
+  vertical-align: middle;
+}
+
+.tct-premium-title {
+  color: #1E293B;
+  /* deep navy text */
+  font-family: var(--tct-serif);
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.tct-premium-sub {
+  color: #475569;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+}
+
+.tct-premium-card {
+  background-color: #FFFFFF;
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.tct-premium-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.tct-premium-card .tct-card-photo-wrapper {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  /* approximately 55-60% of card depending on content */
+  overflow: hidden;
+}
+
+.tct-premium-card .tct-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.tct-premium-card:hover .tct-card-img {
+  transform: scale(1.05);
+}
+
+.tct-premium-card .tct-card-body {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.tct-premium-card .tct-card-title {
+  color: #1E293B;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.tct-premium-card .tct-level-badge {
+  background-color: rgba(234, 88, 12, 0.1);
+  color: #EA580C;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.65rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tct-premium-card .tct-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.tct-premium-card .tct-price-unit {
+  font-size: 1rem;
+  color: #64748B;
+  font-weight: 500;
+  margin-right: 0.25rem;
+}
+
+.tct-premium-card .tct-meta {
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.tct-premium-card .tct-meta li {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tct-premium-card .tct-orange-icon {
+  color: #EA580C;
+}
+
+.tct-premium-card .tct-btn-primary {
+  background-color: #EA580C;
+  color: #FFFFFF;
+  border: none;
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.tct-premium-card .tct-btn-primary:hover {
+  background-color: #C2410C;
+}
+
+.tct-premium-card .tct-btn-text {
+  background: transparent;
+  color: #1E293B !important;
+  border: 1px solid #E2E8F0;
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.tct-premium-card .tct-btn-text:hover {
+  border-color: #EA580C;
+  color: #EA580C !important;
+  background: rgba(234, 88, 12, 0.05);
+}
