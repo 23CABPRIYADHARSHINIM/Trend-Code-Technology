@@ -108,19 +108,21 @@ function Hero() {
   let letterIndex = 0;
 
   return (
-    <header 
-      id="home" 
+    <header
+      id="home"
       className="tct-hero d-flex align-items-center"
       onMouseMove={handleMouseMove}
     >
-      <div 
-        className="tct-hero-bg-parallax" 
-        style={{ transform: `translate(${mousePos.x * -0.5}px, ${mousePos.y * -0.5}px)` }}
-      >
-        <Starfield />
-        <GoldDust />
-        <span className="tct-hero-orb tct-hero-orb--1" aria-hidden="true" />
-        <span className="tct-hero-orb tct-hero-orb--2" aria-hidden="true" />
+      <div className="tct-hero-video-wrapper">
+        <video
+          className="tct-hero-video"
+          src="/videos/Hero Video.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+        <div className="tct-hero-video-overlay" />
       </div>
 
       <div className="container position-relative">
@@ -165,27 +167,9 @@ function Hero() {
               </a>
             </div>
           </div>
-          <div className="col-lg-4 d-none d-lg-block text-center">
-            <div 
-              className="tct-hero-logo-frame tct-hero-arrive"
-              style={{ transform: `translate(${mousePos.x}px, ${mousePos.y}px)` }}
-            >
-              <img
-                src="/images/Logo.jpeg"
-                alt="TCT Fashion Hub logo"
-                className="tct-hero-logo"
-              />
-              <div className="tct-hero-logo-glow"></div>
-            </div>
-          </div>
         </div>
       </div>
 
-      <a href="#classes" className="tct-scroll-cue-premium" aria-label="Scroll to classes">
-        <span className="tct-scroll-cue__mouse-premium" aria-hidden="true">
-          <span className="tct-scroll-cue__wheel"></span>
-        </span>
-      </a>
     </header>
   );
 }

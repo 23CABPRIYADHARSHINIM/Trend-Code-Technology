@@ -168,7 +168,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="tct-section tct-section--dark">
+      <section className="tct-section tct-section--pink">
         <div className="container">
           <div className="text-center mb-5">
             <p className="tct-eyebrow">What we stand for</p>
