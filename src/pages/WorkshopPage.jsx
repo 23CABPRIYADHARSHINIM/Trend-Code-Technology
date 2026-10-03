@@ -8,7 +8,7 @@ const WORKSHOPS = [
   {
     id: "ws-saree-pleating",
     name: "Saree Pre-Pleating",
-    image: "/images/Saree%20pre%20pleating.jpg",
+    image: "/images/saree.jpg",
     level: "Beginner friendly",
     duration: "1 Day",
     gift: "Kit gift: pleating board & measurement guide",
@@ -17,7 +17,7 @@ const WORKSHOPS = [
   {
     id: "ws-saree-draping",
     name: "Saree Draping",
-    image: "https://images.unsplash.com/photo-1610030469983-98e550d61dc9?w=800&q=80",
+    image: "/images/saree draping.jpg",
     level: "All levels",
     duration: "1 Day",
     gift: "Kit gift: safety pin set & draping manual",
@@ -44,7 +44,7 @@ const WORKSHOPS = [
   {
     id: "ws-embroidery",
     name: "Embroidery",
-    image: "/images/Embrading.webp",
+    image: "/images/Intricate%20Indian%20Wedding%20Embroidery%20Setup.png",
     level: "All levels",
     duration: "2 Days",
     gift: "Kit gift: 12-skein threads, needles",

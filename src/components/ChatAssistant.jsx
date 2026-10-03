@@ -21,7 +21,7 @@ const GREETING = {
   id: nextId(),
   from: "bot",
   text:
-    "Vanakkam! 👋 I'm the TCT studio assistant.\n\nAsk me anything — class fees, kit gifts, batch timings, or booking. You can also tap a quick question below.",
+    "Vanakkam! 👋 I'm Robo, sewing together a few helpful answers.\n\nAsk me about class fees, kit gifts, batch timings, or booking. You can also tap a quick question below.",
 };
 
 const QUICK_CHIPS = [
@@ -133,8 +133,38 @@ function answer(text, pricing) {
   };
 }
 
-export default function ChatAssistant() {
+export default function ChatAssistant({ roboControlled = false } = {}) {
   const [open, setOpen] = useState(false);
+  const panelRef = useRef(null);
+
+  useEffect(() => {
+    if (!roboControlled) return undefined;
+    const openFromRobo = () => {
+      setOpen(true);
+    };
+    window.addEventListener("tct-robo-chat-open", openFromRobo);
+    return () => {
+      window.removeEventListener("tct-robo-chat-open", openFromRobo);
+    };
+  }, [roboControlled]);
+
+  useEffect(() => {
+    if (!open || !roboControlled || !panelRef.current) return undefined;
+    const positionBesideRobo = () => {
+      const roboRect = document.querySelector(".tct-robo-chat-hit")?.getBoundingClientRect();
+      if (!roboRect || !panelRef.current) return;
+      const panelRight = Math.min(window.innerWidth - 8, roboRect.left + 12);
+      panelRef.current.style.right = `${Math.max(8, window.innerWidth - panelRight)}px`;
+    };
+    positionBesideRobo();
+    window.addEventListener("resize", positionBesideRobo);
+    return () => window.removeEventListener("resize", positionBesideRobo);
+  }, [open, roboControlled]);
+
+  useEffect(() => {
+    if (open || !roboControlled) return;
+    window.dispatchEvent(new Event("tct-robo-chat-close"));
+  }, [open, roboControlled]);
   const [night, setNight] = useState(
     () => document.documentElement.classList.contains("tct-night")
   );
@@ -213,9 +243,10 @@ export default function ChatAssistant() {
       {/* Round launcher with the company logo */}
       <button
         type="button"
-        className={`tct-chat-launcher${night ? " tct-chat-launcher--night" : ""}${open ? " is-open" : ""}`}
+        className={`tct-chat-launcher${night ? " tct-chat-launcher--night" : ""}${open ? " is-open" : ""}${roboControlled ? " tct-chat-launcher--robo-controlled" : ""}`}
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? "Close chat assistant" : "Chat with TCT Fashion Hub"}
+        tabIndex={roboControlled ? -1 : 0}
         title="Chat with us"
       >
         <span className="tct-chat-launcher__ring" aria-hidden="true" />
@@ -229,7 +260,8 @@ export default function ChatAssistant() {
 
       {/* Chat panel */}
       <section
-        className={`tct-chat-panel${night ? " tct-chat-panel--night" : ""}${open ? " is-open" : ""}`}
+        ref={panelRef}
+        className={`tct-chat-panel${night ? " tct-chat-panel--night" : ""}${roboControlled ? " tct-chat-panel--robo" : ""}${open ? " is-open" : ""}`}
         role="dialog"
         aria-label="TCT Fashion Hub chat assistant"
         aria-hidden={!open}
@@ -252,6 +284,15 @@ export default function ChatAssistant() {
           >
             <i className="bi bi-whatsapp" />
           </a>
+          <button
+            type="button"
+            className="tct-chat-panel__close"
+            onClick={() => setOpen(false)}
+            aria-label="Close chat"
+            title="Close chat"
+          >
+            <i className="bi bi-x-lg" aria-hidden="true" />
+          </button>
         </header>
 
         <div className="tct-chat-panel__list" ref={listRef}>

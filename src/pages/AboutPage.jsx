@@ -25,7 +25,7 @@ export default function AboutPage() {
     {
       name: "Bharath T",
       role: "Chief Executive Officer (CEO)",
-      image: "/images/leadership/ceo-bharath.jpg",
+      image: "/images/CEO Photo.png",
       instagram: "https://www.instagram.com/bharath_heeran/",
       bio: "Bharath sets the vision and the direction of the studio — which crafts we teach, how the academy grows, and how every student is looked after from the first enquiry to the final certificate. He believes craft education in Coimbatore deserves the same polish as the finest boutique, and that learning a handmade skill should always feel like a gift.",
     },

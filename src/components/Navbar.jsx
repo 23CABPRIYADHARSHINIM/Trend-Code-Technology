@@ -77,7 +77,8 @@ export default function Navbar() {
             className="tct-brand__logo"
           />
           <span className="tct-brand__text">
-            TCT Fashion <em>Hub</em>
+            <span>TCT Fashion <em>Hub</em></span>
+            <small className="tct-brand__tagline">Where Threads Meet Tradition</small>
           </span>
         </Link>
 

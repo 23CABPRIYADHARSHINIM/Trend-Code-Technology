@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import Preloader from "./components/Preloader.jsx";
 import ChatAssistant from "./components/ChatAssistant.jsx";
+import RobotMascot from "./mascot/RobotMascot.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import EnquirePage from "./pages/EnquirePage.jsx";
@@ -53,7 +54,8 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
-      <ChatAssistant />
+      <RobotMascot />
+      <ChatAssistant roboControlled />
     </BrowserRouter>
   );
 }

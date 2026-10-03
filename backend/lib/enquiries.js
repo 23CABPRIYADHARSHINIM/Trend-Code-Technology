@@ -92,7 +92,8 @@ function validateEnquiry(body) {
   if (waNorm && waNorm.length < 12) {
     errors.whatsapp_number = "WhatsApp number looks invalid.";
   }
-  if (email && !EMAIL_RE.test(email)) errors.email = "Email looks invalid.";
+  if (!email) errors.email = "Email is required.";
+  else if (!EMAIL_RE.test(email)) errors.email = "Email looks invalid.";
 
   if (Object.keys(errors).length) return { ok: false, errors };
 
@@ -127,6 +128,8 @@ function saveEnquiry(data, meta = {}) {
     service: data.service,
     message: data.message,
     status: "new",
+    email_status: "pending",
+    email_message_id: "",
     whatsapp_studio_message_status: "not_sent",
     whatsapp_customer_message_status: "not_sent",
     studio_message_id: "",

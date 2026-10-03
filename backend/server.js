@@ -14,6 +14,7 @@ const {
   rateLimit,
 } = require("./lib/enquiries");
 const whatsapp = require("./services/whatsapp");
+const email = require("./services/email");
 
 // Hot-reload pricing data: re-read the module on every request so edits to
 // backend/data/pricing.js show up instantly, with NO server restart needed.
@@ -69,7 +70,7 @@ app.get("/api/pricing", (_req, res) => {
 });
 
 // ---- Class enrolment enquiry (JSON-file store + WhatsApp automation) ------
-app.post("/api/enquiries", (req, res) => {
+app.post("/api/enquiries", async (req, res) => {
   const ip = req.ip || "unknown";
   if (!rateLimit(ip)) {
     return res
@@ -84,14 +85,41 @@ app.post("/api/enquiries", (req, res) => {
       .json({ ok: false, error: "Validation failed", errors: result.errors });
   }
 
+  if (!email.isConfigured()) {
+    return res.status(503).json({
+      ok: false,
+      code: "EMAIL_NOT_CONFIGURED",
+      error: "Email delivery is not configured on the server.",
+    });
+  }
+
   const enquiry = saveEnquiry(result.data, { ip });
 
-  // WhatsApp automation runs in the background: a studio alert to the company
-  // number and an automatic thank-you to the customer. The form never waits
-  // for (or fails because of) WhatsApp — a 201 goes out immediately.
+  // Confirm the primary email delivery before telling the student it was sent.
+  const emailNotice = await email.sendEnquiryEmail(enquiry);
+  const emailStatus = emailNotice.ok ? "sent" : emailNotice.skipped ? "not_sent" : "failed";
+  updateEnquiry(enquiry.id, {
+    email_status: emailStatus,
+    email_message_id: emailNotice.id || "",
+  });
+  if (!emailNotice.ok) {
+    return res.status(503).json({
+      ok: false,
+      code: "EMAIL_NOT_SENT",
+      error: emailNotice.skipped
+        ? "Email delivery is not configured on the server."
+        : "The enquiry email could not be delivered.",
+    });
+  }
+
+  // Keep the existing WhatsApp notifications as additional notifications;
+  // they do not redirect the student away from the website form.
   setImmediate(async () => {
-    const studio = await whatsapp.sendEnquiryNotification(enquiry);
-    const thanks = await whatsapp.sendCustomerThankYou(enquiry);
+    const [studio, thanks, emailThanks] = await Promise.all([
+      whatsapp.sendEnquiryNotification(enquiry),
+      whatsapp.sendCustomerThankYou(enquiry),
+      email.sendCustomerThankYouEmail(enquiry),
+    ]);
     const stateFor = (r) =>
       r.ok ? "sent" : r.skipped ? "not_sent" : "failed";
     updateEnquiry(enquiry.id, {
@@ -101,9 +129,9 @@ app.post("/api/enquiries", (req, res) => {
       customer_message_id: thanks.id || "",
     });
     console.log(
-      `[enquiry #${enquiry.id}] studio: ${stateFor(studio)}` +
+      `[enquiry #${enquiry.id}] email: sent | studio WhatsApp: ${stateFor(studio)}` +
         `${studio.error ? ` (${studio.error})` : ""} | customer: ${stateFor(thanks)}` +
-        `${thanks.error ? ` (${thanks.error})` : ""}`
+        `${thanks.error ? ` (${thanks.error})` : ""} | customer email: ${stateFor(emailThanks)}`
     );
   });
 
@@ -118,6 +146,7 @@ app.post("/api/enquiries", (req, res) => {
       service: enquiry.service,
       message: enquiry.message,
       status: enquiry.status,
+      email_status: emailStatus,
       whatsapp_customer_message_status: enquiry.whatsapp_customer_message_status,
       created_at: enquiry.created_at,
     },

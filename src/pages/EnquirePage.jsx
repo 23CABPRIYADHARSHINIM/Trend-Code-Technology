@@ -3,13 +3,6 @@ import { useSearchParams } from "react-router-dom";
 import Confetti from "../components/Confetti.jsx";
 import ClassSelect from "../components/ClassSelect.jsx";
 
-const WHATSAPP_NUMBER = "919384846922";
-
-const whatsappEnquiryLink = (form) =>
-  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    `Hello TCT Fashion Hub,\n\nNew class enquiry\nName: ${form.name}\nPhone: ${form.phone}\nInterested in: ${form.interest}\nMessage: ${form.message || "Not provided"}`
-  )}`;
-
 export default function EnquirePage() {
   const [params] = useSearchParams();
   const prefill = params.get("class") || "";
@@ -48,14 +41,20 @@ export default function EnquirePage() {
       return;
     }
     setStatus("sending");
-    window.open(whatsappEnquiryLink(form), "_blank", "noopener,noreferrer");
     try {
       const res = await fetch("/api/enquiries", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      if (!res.ok) throw new Error("Request failed");
+      const result = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        if (result.code === "EMAIL_NOT_CONFIGURED" || result.code === "EMAIL_NOT_SENT") {
+          setStatus("email-error");
+          return;
+        }
+        throw new Error("Request failed");
+      }
       setStatus("sent");
       setBurst((b) => b + 1); // fire the golden celebration
       setForm({ name: "", phone: "", email: "", interest: "", message: "" });
@@ -91,7 +90,6 @@ export default function EnquirePage() {
               <form
                 className="tct-form tct-form--light tct-form--entrance"
                 onSubmit={submit}
-                noValidate
               >
                 <div className="row g-3">
                   <div className="col-md-6">
@@ -115,7 +113,7 @@ export default function EnquirePage() {
                     />
                   </div>
                   <div className="col-12">
-                    <label className="form-label">Email (optional)</label>
+                    <label className="form-label">Email *</label>
                     <input
                       className="form-control"
                       type="email"
@@ -123,6 +121,7 @@ export default function EnquirePage() {
                       value={form.email}
                       onChange={onChange}
                       placeholder="you@example.com"
+                      required
                     />
                   </div>
                   <div className="col-12">
@@ -175,7 +174,14 @@ export default function EnquirePage() {
                 {status === "error" && (
                   <p className="tct-form-err mt-3">
                     <i className="bi bi-exclamation-circle-fill" /> Something
-                    went wrong — please call us instead.
+                    went wrong while sending your enquiry. Please try again.
+                  </p>
+                )}
+                {status === "email-error" && (
+                  <p className="tct-form-err mt-3" role="alert">
+                    <i className="bi bi-exclamation-circle-fill" /> Email delivery
+                    is not ready on the server yet. Your enquiry was not sent;
+                    please email tctfashionhub@gmail.com directly for now.
                   </p>
                 )}
               </form>

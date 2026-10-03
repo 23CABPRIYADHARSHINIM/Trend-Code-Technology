@@ -2,12 +2,12 @@ import { useEffect, useMemo, useState } from "react";
 import SingleClasses from "../components/SingleClasses.jsx";
 import ComboClasses from "../components/ComboClasses.jsx";
 import CtaBand from "../components/CtaBand.jsx";
-import Marquee from "../components/Marquee.jsx";
+import WorkshopNav from "../components/WorkshopNav.jsx";
 import Divider from "../components/Divider.jsx";
 import Starfield from "../components/Starfield.jsx";
 
 const CRAFTS = [
-  "Tailoring",
+      "Tailoring",
   "Embroidery",
   "Aari Work",
   "Jewellery Making",
@@ -32,7 +32,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <Marquee items={CRAFTS} dark />
+      <WorkshopNav />
       <Divider />
       {pricing ? (
         <>

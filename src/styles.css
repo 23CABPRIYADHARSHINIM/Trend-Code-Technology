@@ -81,22 +81,27 @@ body {
 
 /* ---------- Navbar ---------- */
 .tct-navbar {
-  padding: 1rem 0;
+  padding: 0.2rem 0;
   transition: all 0.3s ease;
   background: var(--tct-navy);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: none;
 }
 
 .tct-navbar--scrolled {
   background: var(--tct-navy);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 0.6rem 0;
+  padding: 0.15rem 0;
 }
 
 .tct-brand {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+}
+
+.tct-navbar .tct-brand {
+  gap: 0.55rem;
+  margin-left: -32px;
 }
 
 .tct-brand__mark {
@@ -130,6 +135,23 @@ body {
 .tct-brand__text em {
   color: var(--tct-orange);
   font-style: normal;
+}
+
+.tct-navbar .tct-brand__text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  line-height: 1.1;
+}
+
+.tct-brand__tagline {
+  color: #64748b;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .tct-nav-link {
@@ -177,7 +199,8 @@ body {
 /* ---------- Hero ---------- */
 .tct-hero {
   min-height: 92vh;
-  background: #E0F2FE !important; /* Force Light blue always */
+  background: #E0F2FE !important;
+  /* Force Light blue always */
   position: relative;
   overflow: hidden;
 }
@@ -635,7 +658,7 @@ body {
 }
 
 .tct-about-panel {
-  background: #FFF7ED; /* Light orange */
+  background: #FFFFFF;
   border-radius: 4px;
   padding: 3rem;
   border: 1px solid rgba(234, 88, 12, 0.2);
@@ -656,12 +679,12 @@ body {
 }
 
 html.tct-night .tct-about-panel {
-  background: linear-gradient(160deg, #2b251c, #201c15);
-  border: 1px solid rgba(185, 138, 47, 0.3);
+  background: #FFFFFF;
+  border: 1px solid rgba(234, 88, 12, 0.2);
 }
 
 html.tct-night .tct-quote {
-  color: #f4efe4;
+  color: #1E293B;
 }
 
 html.tct-night .tct-quote-by {
@@ -787,17 +810,47 @@ html.tct-night .tct-quote-by {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(25, 103, 210, 0.3);
+  border: none;
   border-radius: 50%;
-  color: var(--tct-brand-blue);
+  color: #ffffff !important;
   text-decoration: none;
-  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
 }
 
 .tct-social-links a:hover {
   transform: translateY(-4px) rotate(6deg);
-  background: var(--tct-brand-blue);
-  color: #ffffff;
+}
+
+.tct-social-links a[aria-label="Instagram"] {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.tct-social-links a[aria-label="Instagram"]:hover {
+  box-shadow: 0 8px 20px rgba(220, 39, 67, 0.4);
+}
+
+.tct-social-links a[aria-label="Facebook"] {
+  background: #1877F2;
+}
+
+.tct-social-links a[aria-label="Facebook"]:hover {
+  box-shadow: 0 8px 20px rgba(24, 119, 242, 0.4);
+}
+
+.tct-social-links a[aria-label="YouTube"] {
+  background: #FF0000;
+}
+
+.tct-social-links a[aria-label="YouTube"]:hover {
+  box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4);
+}
+
+.tct-social-links a[aria-label="Email"] {
+  background: #1877F2;
+}
+
+.tct-social-links a[aria-label="Email"]:hover {
+  box-shadow: 0 8px 20px rgba(24, 119, 242, 0.4);
 }
 
 .tct-footer-bottom {
@@ -814,19 +867,29 @@ html.tct-night .tct-quote-by {
 
 /* ---------- Brand / logo ---------- */
 .tct-brand__logo {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 1.5px solid var(--tct-orange);
-  box-shadow: 0 0 12px rgba(252, 67, 13, 0.35);
-  margin-right: 0.8rem;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  border-radius: 0;
+  border: 0;
+  background: transparent;
+  mix-blend-mode: multiply;
+  box-shadow: none;
+  margin-right: 0;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .tct-brand:hover .tct-brand__logo {
   transform: scale(1.05);
-  box-shadow: 0 0 16px rgba(252, 67, 13, 0.5);
+  box-shadow: none;
+}
+
+.tct-navbar .tct-brand__logo {
+  transform: scale(1.14);
+}
+
+.tct-navbar .tct-brand:hover .tct-brand__logo {
+  transform: scale(1.2);
 }
 
 .tct-hero-logo-frame {
@@ -2496,6 +2559,11 @@ body.tct-launched .tct-hero-arrive .tct-hero-logo {
 .tct-page-hero__logo,
 .tct-preloader__logo {
   object-fit: contain !important;
+}
+
+.tct-hero-logo,
+.tct-page-hero__logo,
+.tct-preloader__logo {
   background: #fffdf8;
 }
 
@@ -2726,6 +2794,44 @@ html.tct-night .tct-starfield {
    ============================================================ */
 @media (max-width: 991px) {
 
+  .tct-navbar > .container {
+    flex-wrap: nowrap;
+  }
+
+  .tct-navbar .tct-brand {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin-left: -8px;
+    margin-right: 0.5rem;
+    gap: 0.45rem;
+  }
+
+  .tct-navbar .navbar-toggler {
+    flex: 0 0 auto;
+    margin-left: auto;
+  }
+
+  .tct-navbar .tct-brand__logo {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+  }
+
+  .tct-navbar .tct-brand__text {
+    min-width: 0;
+  }
+
+  .tct-navbar .tct-brand__tagline {
+    overflow: hidden;
+    font-size: 0.58rem;
+    letter-spacing: 0.045em;
+    text-overflow: ellipsis;
+  }
+
+  .tct-navbar .tct-brand__text > span {
+    white-space: nowrap;
+  }
+
   /* Hero: always start BELOW the fixed navbar + brand row */
   .tct-hero {
     padding: 7.5rem 0 4.5rem;
@@ -2840,9 +2946,9 @@ html.tct-night .tct-starfield {
   }
 
   .tct-brand__logo {
-    width: 50px;
-    height: 50px;
-    margin-right: 0.5rem;
+    width: 56px;
+    height: 56px;
+    margin-right: 0;
   }
 
   .tct-theme-toggle {
@@ -3372,8 +3478,9 @@ html {
 /* ---------- Navbar ---------- */
 .tct-navbar {
   background: #F0F6FF !important;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: none;
 }
+
 
 .tct-navbar--scrolled {
   background: #F0F6FF !important;
@@ -3575,7 +3682,6 @@ html.tct-night .tct-chip {
   -webkit-backdrop-filter: blur(10px) saturate(140%);
 }
 
-.tct-about-panel,
 .tct-contact-panel {
   background: linear-gradient(152deg, rgba(52, 45, 34, 0.94), rgba(28, 24, 19, 0.92));
   border: 1px solid rgba(185, 138, 47, 0.35);
@@ -3645,16 +3751,6 @@ html.tct-night .tct-form--light select.form-select {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
-.tct-social-links a {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(8px) saturate(140%);
-  -webkit-backdrop-filter: blur(8px) saturate(140%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-.tct-social-links a:hover {
-  box-shadow: 0 12px 26px rgba(185, 138, 47, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-}
 
 .tct-footer-links a {
   display: inline-block;
@@ -4720,6 +4816,12 @@ html.tct-night .tct-note-card {
   padding: 0;
   cursor: pointer;
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+}
+
+/* Robo occupies the old launcher spot and opens this chat when tapped. */
+.tct-chat-launcher--robo-controlled {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .tct-chat-launcher:hover {
@@ -5982,7 +6084,8 @@ html.tct-night .tct-class-select__empty {
 
 /* Custom Pink Section */
 .tct-section--pink {
-  background: #FDF2F8; /* Light pink */
+  background: #FDF2F8;
+  /* Light pink */
   color: #1E293B;
 }
 
@@ -5991,7 +6094,8 @@ html.tct-night .tct-class-select__empty {
 }
 
 .tct-section--pink .tct-eyebrow {
-  color: #BE185D; /* Darker pink for eyebrow */
+  color: #BE185D;
+  /* Darker pink for eyebrow */
 }
 
 .tct-section--pink .tct-value-card {
@@ -6008,7 +6112,8 @@ html.tct-night .tct-class-select__empty {
 }
 
 .tct-section--pink .tct-value-card i {
-  color: #DB2777; /* Pink icon */
+  color: #DB2777;
+  /* Pink icon */
   border-color: rgba(219, 39, 119, 0.3);
 }
 
@@ -6100,7 +6205,158 @@ html.tct-night .tct-page-hero .tct-section-sub {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(4, 137, 253, 0.2); /* Matching blue theme overlay with dark tint */
-  background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(4,137,253,0.3));
+  background: rgba(4, 137, 253, 0.2);
+  /* Matching blue theme overlay with dark tint */
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(4, 137, 253, 0.3));
   pointer-events: none;
-}
+}
+
+/* ============================================================
+   WORKSHOP NAV
+   Premium boutique-style navigation container in light blue and white
+   ============================================================ */
+.tct-workshop-nav-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+.tct-workshop-nav {
+  background: #FFFFFF;
+  border: 1px solid #D6E9FF;
+  border-radius: 50px;
+  box-shadow: 0 8px 32px rgba(4, 137, 253, 0.08);
+  padding: 0.5rem;
+  overflow: hidden;
+  width: 100%;
+}
+
+.tct-workshop-nav__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: tct-marquee-move 35s linear infinite;
+}
+
+.tct-workshop-nav:hover .tct-workshop-nav__track {
+  animation-play-state: paused;
+}
+
+.tct-workshop-nav__wrapper {
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+}
+
+.tct-workshop-nav__item {
+  background: transparent;
+  border: none;
+  border-radius: 30px;
+  padding: 0.6rem 1.25rem;
+  color: #24364B;
+  font-family: var(--tct-sans);
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.tct-workshop-nav__item:hover {
+  background: #EAF4FF;
+  color: #0489FD;
+}
+
+.tct-workshop-nav__item.active {
+  background: #EAF4FF;
+  color: #0489FD;
+  box-shadow: inset 0 0 0 1px #D6E9FF;
+}
+
+.tct-workshop-nav__icon {
+  font-size: 1.1rem;
+  color: #0489FD;
+  transition: transform 0.3s ease;
+}
+
+.tct-workshop-nav__item:hover .tct-workshop-nav__icon {
+  transform: scale(1.1);
+}
+
+.tct-workshop-nav__divider {
+  width: 1px;
+  height: 20px;
+  background: #D6E9FF;
+  margin-left: 1rem;
+}
+
+/* Mobile navbar panel: readable links on the left, clear Robo space on the right. */
+@media (max-width: 991px) {
+  .tct-navbar > .container {
+    flex-wrap: wrap;
+  }
+
+  .tct-navbar .navbar-collapse {
+    flex: 0 0 min(360px, calc(100vw - 120px));
+    width: min(360px, calc(100vw - 120px));
+    max-width: 100%;
+    margin: 0.65rem 0 0;
+    padding: 0.7rem;
+    border: 1px solid rgba(185, 138, 47, 0.22);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.98) !important;
+    box-shadow: 0 14px 38px rgba(20, 30, 48, 0.18);
+  }
+
+  .tct-navbar .navbar-nav {
+    width: 100%;
+    align-items: stretch;
+    gap: 2px;
+  }
+
+  .tct-navbar .navbar-nav > .nav-item {
+    width: 100%;
+    margin: 0 !important;
+  }
+
+  .tct-navbar .tct-nav-link {
+    margin: 0;
+    padding: 0.62rem 0.75rem;
+    border-radius: 9px;
+    color: #243247 !important;
+    white-space: nowrap;
+  }
+
+  .tct-navbar .tct-nav-link:hover,
+  .tct-navbar .tct-nav-link.active {
+    background: #fff5e9;
+    color: #c45525 !important;
+  }
+
+  .tct-navbar .tct-nav-link::after {
+    display: none;
+  }
+
+  .tct-navbar .tct-btn-sm-nav {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 720px) {
+  /* Keep the open menu above Robo so it never covers labels or the logo. */
+  .tct3d-wrap,
+  .tct-robo-chat-hit {
+    z-index: 1029;
+  }
+}

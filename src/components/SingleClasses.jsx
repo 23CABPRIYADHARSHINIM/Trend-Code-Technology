@@ -5,10 +5,10 @@ import Reveal from "./Reveal.jsx";
 
 const PREMIUM_IMAGES = {
   "Tailoring Class": "/images/Tailoring%20class.webp",
-  "Embroidery Class": "/images/Embrading.webp",
+  "Embroidery Class": "/images/Intricate%20Indian%20Wedding%20Embroidery%20Setup.png",
   "Aari Work Class": "/images/Aari%20Work.jpg",
-  "Jewellery Making": "/images/Jewellery%20making.jpg",
-  "Saree Pre-Pleating": "/images/Saree%20pre%20pleating.jpg",
+  "Jewellery Making": "/images/jewellery.jpg",
+  "Saree Pre-Pleating": "/images/saree.jpg",
   "Mehndi Class": "/images/Mehandi.jpg",
   "Resin Art": "https://images.unsplash.com/photo-1628156107310-85f269baab37?auto=format&fit=crop&q=80&w=800"
 };
